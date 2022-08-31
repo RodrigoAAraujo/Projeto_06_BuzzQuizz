@@ -21,6 +21,7 @@ header {
     font-size: 37px;
     color: white;
     font-weight: 700;
+    z-index: 5;
 }
 
 
