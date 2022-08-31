@@ -5,10 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-------css Styles------->
-        <link rel="stylesheet" href="./reset.css">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/2-screen.css">
     </head>
     <body>
+        <header>
+            <h1>BuzzQuizz</h1>
+        </header>
+
         <main>
 
 
@@ -25,15 +30,45 @@
 
         </main>
 
-        <main>
+        <!-- Tela 2: Página de um Quizz -->
+        <main class="second-screen hidden">
+            <section>
+                <!-- Botao provisório pra pegar os dados da API-->
+                <button onclick="getQuizzes()">Requisição</button>
+                
+                <div class="quizz-header">
+                    <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
+                </div>
 
-
-
-
-
-
-            
+                <div class="quizz-question-container">
+                    <div class="quizz-question">
+                        <h1>Pergunta</h1>
+                    </div>
+                    <div class="quizz-options">
+                        <div>
+                            <img src="" alt="">
+                            gato
+                        </div>
+                        <div>
+                            <img src="" alt="">
+                            rato
+                        </div>
+                        <div>
+                            <img src="" alt="">
+                            sapo
+                        </div>
+                        <div>
+                            <img src="" alt="">
+                            furao
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="script/interaction.js"></script>
+        <script src="script/2-screen-interaction.js"></script>
     </body>
 </html>
