@@ -1,0 +1,41 @@
+.first-screen {
+    max-width: 1050px;
+    box-sizing: content-box;
+    margin: 0px auto;
+    padding-top: 40px;
+}
+.first-screen h1{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23.44px;
+    
+}
+.first-screen ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 15px;
+    row-gap: 12px;
+    margin: 16px 0px 38px 0px;
+}
+.first-screen li {
+    width: 340px;
+    height: 181px;
+    position: relative;
+}
+.first-screen li img{
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: auto;
+}
+.first-screen li h2{
+    position: absolute;
+    z-index: 2;
+    bottom: 8px;
+    left: 16px;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22.27px;
+}
