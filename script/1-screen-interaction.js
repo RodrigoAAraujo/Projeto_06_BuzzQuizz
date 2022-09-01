@@ -49,5 +49,12 @@ function HasQuizzes(){
     }
 }
 
+function goCreateQuizz(){
+    const FirstScreen = document.querySelector(".first-screen")
+    const ThirdScreen = document.querySelector(".third-screen")
+
+    FirstScreen.classList.add("hidden")
+    ThirdScreen.classList.remove("hidden")
+}
 
 getAndRenderQuizzes()
