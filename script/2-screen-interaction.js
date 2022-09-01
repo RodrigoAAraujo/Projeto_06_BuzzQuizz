@@ -1,18 +1,8 @@
 const mainElement = document.querySelector('.second-screen')
 const section = document.querySelector('.second-screen section')
-const correctAnswers = [];
-
-const response = axios.get(`${url}/10080`); /*Depois de testar, retirar essa parte do código.*/
-response.catch(()=>{                        /*Eu implementei o seu código na 1-screen pra já direcionar pro quiz específico */
-    location.reload();                      /* */
-})                                          /* */
-
-response.then((response)=>{                 /* */
-    const quizz = response.data;            /* */
-    console.log(quizz)                      /* */
-    createHeaderHTML(quizz)                 /* */
-    createQuizzQuestions(quizz)             /* */
-})                                          
+let correctAnswers = [];
+let questionAmt = 0;
+let correctAnswerAmt = 0;                                     
 
 function createHeaderHTML(quizz) {
     let imageElement = document.createElement("img");
@@ -24,8 +14,12 @@ function createHeaderHTML(quizz) {
     headerImageContainer.appendChild(imageElement);
 }
 
-function createQuizzQuestions(quizz) {
+function createQuizzQuestions(quizz) {  
     let i = 0;
+    let h1Container;
+    let answersHTML;
+    let alternatives;
+
     for (let question of quizz.questions){
         // Gera o HTML  
         section.innerHTML +=
@@ -43,15 +37,16 @@ function createQuizzQuestions(quizz) {
         h1Container.style.backgroundColor = question.color;
 
         // Gera e embaralha as respostas
-        let answersHTML = pushAnswers(question.answers);
+        answersHTML = pushAnswers(question.answers);
         answersHTML.sort(()=> Math.random() - 0.5);
         
         // Coloca as respostas embaralhadas no HTML
-        let alternatives = document.querySelector(`#quizz-alternative-${i}`);
-        for (let i = 0; i < answersHTML.length; i++) {
-            alternatives.innerHTML += answersHTML[i];
+        alternatives = document.querySelector(`#quizz-alternative-${i}`);
+        for (let j = 0; j < answersHTML.length; j++) {
+            alternatives.innerHTML += answersHTML[j];
         }
 
+        questionAmt++;
         i++;
     }
 }
@@ -99,22 +94,81 @@ function checkAnswer(clickedElement) {
             child.classList.add('correct-answer')
         }
     }
-
+    
     // Pega o Id do próximo elemento para dar um scrollIntoView
     let nextElementId = Number(quizzAlterntive.parentNode.id.slice(-1)) + 1;
-    let nextElement = document.querySelector(`#quizz-question-container-${nextElementId}`)
+    let nextElement = document.querySelector(`#quizz-question-container-${nextElementId}`);
+    
     setTimeout(() => {
-        nextElement.scrollIntoView({behavior: "smooth"});
+        if(nextElement) {
+            nextElement.scrollIntoView({behavior: "smooth", block: "center"});
+        } else{
+            let answersAmt = document.querySelectorAll('.selected').length; 
+
+            // Se respondeu tudo, exibe o resultado e scrolla no resultado
+            if(answersAmt === questionAmt) {
+                
+                setTimeout(() => {
+                    showResults();
+                    let resultElement = document.querySelector('#results')
+                    resultElement.scrollIntoView({behavior: "smooth", block: "center"});
+                }, 2000);
+            }
+        }
     }, 2000);
     
-    // Nao deixa mais o usuário clicar  
+    // Nao deixa mais o usuário clicar
     for (let child of quizzAlterntive.children) {
         child.removeAttribute("onclick");
     }
-    
+
 }
 
-function post() {
+function showResults() {
+    let score = calculateScore();
+    let resultLevel;
+    for (let level of clickedQuizz.levels){
+        if(score >= level.minValue){
+            resultLevel = level;
+        }
+    }
+
+    let elementNav = document.querySelector('nav')
+    elementNav.classList.remove("hidden")
+    let elementAside = document.querySelector('aside');
+    elementAside.classList.remove("hidden")
+    elementAside.innerHTML =
+    `
+    <div class="quizz-question-container" id='results'>
+        <div class='quizz-question'>
+            <h1>${score}% de acerto: ${resultLevel.title}</h1>
+        </div>
+
+        <div class="level-img-text">
+            <img class="quizz-result-image" src=${resultLevel.image}>   
+            <p>${resultLevel.text}</p>
+        <div>
+    </div
+    `
+}
+
+function calculateScore() {
+    const arrayQuizzes = document.querySelectorAll('.quizz-alternatives');
+    
+    for (let quizz of arrayQuizzes){
+        for (let answer of quizz.children){
+            if (answer.classList.contains("selected") && answer.classList.contains("correct-answer")){
+                correctAnswerAmt ++;
+            } 
+        }
+    }
+
+    const score = Math.round((correctAnswerAmt / questionAmt)*100)
+    return score;
+
+}
+
+function post() {   
     quizz = {
         title: "USE ESSE PARA TESTAR GET: o quao potterhead vc é?",
         image: "https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg",
@@ -161,8 +215,8 @@ function post() {
                         isCorrectAnswer: false
                     },
                     {
-                        text: "anel velho",
-                        image: "https://a-static.mlcdn.com.br/800x560/anel-feminino-ouro-velho-ajustavel-com-pedras-de-acrilico-marrom-e-bege-kit-2pc-gk/acessoryoo2/2921p/ 6df9080d13c4d4cb7a6caada0fee5318.jpg" ,
+                        text: "anel de brinquedo",
+                        image: "https://cf.shopee.com.br/file/5abbed73a0f94750707a9a38cc9eb29f" ,
                         isCorrectAnswer: true
                     },
                     {
@@ -179,7 +233,7 @@ function post() {
                 answers: [
                     {   
                         text: "rony",
-                        image: "https://pm1.narvii.com/6434/d5c39b760fa02863487e50e38e4e4352e56a0db9_hq.jpg" ,
+                        image: "https://static1.purebreak.com.br/articles/9/97/35/9/@/384519-de-harry-potter-prove-que-voce-sabe-t-diapo-4.jpg" ,
                         isCorrectAnswer: false
                     },
                     {
@@ -189,20 +243,27 @@ function post() {
                     },
                 ]
             }
+
         ],
 
         levels: [
             {
-                title:"basico",
-                image:"https://static.wikia.nocookie.net/harrypotter/images/2/20/C93ced28e52082d80becd80a685e2766.jpg/revision/latest?cb=20201004232712&path-prefix=pt-br",
-                text: 'perguntas faceis',
+                title:"vc nao e bruxo",
+                image:"https://i.pinimg.com/originals/42/8e/34/428e34c70768c48b138dd9a3b60b157b.jpg",
+                text: 'patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore.',
                 minValue: 0
             },
             {
-                title:"medio",
-                image:"https://static.wikia.nocookie.net/harrypotter/images/2/20/C93ced28e52082d80becd80a685e2766.jpg/revision/latest?cb=20201004232712&path-prefix=pt-br",
-                text: 'perguntas medianas',
+                title:"voce é praticamente um aluno de hogwarts",
+                image:"https://images-cdn.9gag.com/photo/aV3PzDn_700b.jpg",
+                text: 'Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.',
                 minValue: 50
+            } ,
+            {
+                title:"PERFEITO! voce conjugaria um pratono facilmente",
+                image:"https://static1.purebreak.com.br/articles/9/10/32/69/@/434382--harry-potter-quiz-qual-seria-o-seu-ex-opengraph_1200-2.jpg",
+                text: "vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry.",
+                minValue: 100
             } 
         ]
     }
@@ -214,3 +275,35 @@ function post() {
         // console.log(a)
     })
 } 
+
+function resetQuizz() {
+    correctAnswers = [];
+    questionAmt = 0;
+    correctAnswerAmt = 0;  
+
+    mainElement.innerHTML =
+    `
+    <div class="quizz-header">
+            <div class="bg-opacity">
+                <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
+            </div>
+                <h1>teste</h1>
+    </div>
+            
+    <div class="container">
+        <section>
+            <!-- Aqui ficam as perguntas -->
+        </section>
+        <aside class="hidden">
+            <!-- Aqui fica o feedback final -->
+        </aside>
+        <nav class="hidden">
+            <button id="btn-reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+            <button id="btn-home" onclick="homeScreen()">Voltar pra home</button>
+        </nav>
+    </div>
+    `
+    console.log(clickedQuizz);
+    createHeaderHTML(clickedQuizz);
+    createQuizzQuestions(clickedQuizz);
+}

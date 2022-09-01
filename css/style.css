@@ -6,6 +6,7 @@
 body{
     font-family: 'Roboto', sans-serif;
     margin-top: 70px; /* Não sei onde é melhor colocar o espaço pro header fixo */
+    margin-bottom: 60px;
 }
 li{
     list-style: none;
