@@ -7,6 +7,9 @@ body{
     font-family: 'Roboto', sans-serif;
     margin-top: 70px; /* Não sei onde é melhor colocar o espaço pro header fixo */
 }
+li{
+    list-style: none;
+}
 
 header {
     width: 100%;
@@ -23,9 +26,6 @@ header {
     font-weight: 700;
     z-index: 5;
 }
-
-
-
 
 
 .hidden {

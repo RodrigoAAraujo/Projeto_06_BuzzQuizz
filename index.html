@@ -7,6 +7,7 @@
         <!-------css Styles------->
         <link rel="stylesheet" href="./css/reset.css">
         <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/1-screen.css">
         <link rel="stylesheet" href="./css/2-screen.css">
     </head>
     <body>
@@ -14,20 +15,27 @@
             <h1>BuzzQuizz</h1>
         </header>
 
-        <main>
+        <!--Tela 1: Lista de Quizzes -->
+        <main class="first-screen">
+            <div class="my-quizzes">
+                <div>   
+                    <h1>Seus Quizzes</h1>
+                    <button onclick="goCreateQuizz()">+</button>
+                </div>
+                <ul>
+                </ul>
+                <div class="hidden no-quiz">
+                    <p>Você não criou nenhum quizz ainda :(</p>
+                    <button onclick="goCreateQuizz()">Criar Quizz</button>
+                </div>
+            </div>
 
+            <div class="all-quizzes">
+                <h1>Todos os quizzes</h1>
+                <ul>
 
-
-
-
-
-
-
-
-
-
-
-
+                </ul>
+            </div>
         </main>
 
         <!-- Tela 2: Página de um Quizz -->
@@ -45,6 +53,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="script/interaction.js"></script>
+        <script src="script/1-screen-interaction.js"></script>
         <script src="script/2-screen-interaction.js"></script>
     </body>
 </html>
