@@ -1,5 +1,8 @@
 const otherQuizzes = document.querySelector(".first-screen .all-quizzes ul")
 const myQuizzes = document.querySelector(".first-screen .my-quizzes ul")
+const FirstScreen = document.querySelector(".first-screen")
+const SecondScreen = document.querySelector(".second-screen")
+const ThirdScreen = document.querySelector(".third-screen")
 let myQuizzesCreated = []
 let alreadyHasQuiz = true
 
@@ -14,7 +17,7 @@ function getAndRenderQuizzes(){
 
             if (myQuizzesCreated.length == 0 || myQuizzesCreated.forEach((element) => element =! quizId)){
                 otherQuizzes.innerHTML += `
-                <li class="${quizId}" onclick="enterQuiz()">
+                <li class="${quizId}" onclick="enterQuiz(this)">
                     <h2>${quizTitle}</h2>
                     <img src="${quizImage}"></img>
                 </li>
@@ -22,7 +25,7 @@ function getAndRenderQuizzes(){
             }else{
                 alreadyHasQuiz = true
                 myQuizzes.innerHTML += `
-                <li class="${quizId}" onclick="enterQuiz()">
+                <li class="${quizId}" onclick="enterQuiz(this)">
                     <h2>${quizTitle}</h2>
                     <img src="${quizImage}"></img>
                 </li>
@@ -55,6 +58,22 @@ function goCreateQuizz(){
 
     FirstScreen.classList.add("hidden")
     ThirdScreen.classList.remove("hidden")
+}
+
+function enterQuiz(id){
+    FirstScreen.classList.add("hidden")
+    SecondScreen.classList.remove("hidden")
+    let QuizzId = id.classList
+    const response = axios.get(`${url}/${QuizzId}`);
+    response.catch(()=>{
+        location.reload();
+    })
+    
+    response.then((response)=>{
+        const quizz = response.data;
+        createHeaderHTML(quizz)
+        createQuizzQuestions(quizz)
+    })
 }
 
 getAndRenderQuizzes()

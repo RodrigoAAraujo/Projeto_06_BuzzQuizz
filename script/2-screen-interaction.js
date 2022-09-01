@@ -2,17 +2,17 @@ const mainElement = document.querySelector('.second-screen')
 const section = document.querySelector('.second-screen section')
 const correctAnswers = [];
 
-const response = axios.get(`${url}/10080`);
-response.catch(()=>{
-    location.reload();
-})
+const response = axios.get(`${url}/10080`); /*Depois de testar, retirar essa parte do código.*/
+response.catch(()=>{                        /*Eu implementei o seu código na 1-screen pra já direcionar pro quiz específico */
+    location.reload();                      /* */
+})                                          /* */
 
-response.then((response)=>{
-    const quizz = response.data;
-    console.log(quizz)
-    createHeaderHTML(quizz)
-    createQuizzQuestions(quizz)
-})
+response.then((response)=>{                 /* */
+    const quizz = response.data;            /* */
+    console.log(quizz)                      /* */
+    createHeaderHTML(quizz)                 /* */
+    createQuizzQuestions(quizz)             /* */
+})                                          
 
 function createHeaderHTML(quizz) {
     let imageElement = document.createElement("img");
