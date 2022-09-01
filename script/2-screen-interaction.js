@@ -260,7 +260,7 @@ function post() {
                 minValue: 50
             } ,
             {
-                title:"PERFEITO! voce conjugaria um pratono facilmente",
+                title:"PERFEITO! voce conjuraria facilmente um patrono",
                 image:"https://static1.purebreak.com.br/articles/9/10/32/69/@/434382--harry-potter-quiz-qual-seria-o-seu-ex-opengraph_1200-2.jpg",
                 text: "vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry.",
                 minValue: 100
