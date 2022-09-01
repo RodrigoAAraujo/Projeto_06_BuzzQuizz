@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/1-screen.css">
         <link rel="stylesheet" href="./css/2-screen.css">
-        <link rel="stylesheet" href="/css/3-screen.css">
+        <link rel="stylesheet" href="./css/3-screen.css">
     </head>
     <body>
         <header onclick="post()">
@@ -17,7 +17,7 @@
         </header>
 
         <!--Tela 1: Lista de Quizzes -->
-        <main class="first-screen">
+        <main class="first-screen hidden">
             <div class="my-quizzes">
                 <div class="my-interface">   
                     <h1>Seus Quizzes</h1>
@@ -41,7 +41,7 @@
         </main>
 
         <!-- Tela 2: Página de um Quizz -->
-        <main class="second-screen hidden">
+        <main class="second-screen hidden" >
             
             <div class="quizz-header">
                 <div class="bg-opacity">
@@ -50,13 +50,78 @@
                 <h1>teste</h1>
             </div>
             
-            <section></section>
+            <div class="container">
+                <section>
+                    <!-- Aqui ficam as perguntas -->
+                </section>
+                <aside class="hidden">
+                    <!-- Aqui fica o feedback final -->
+                </aside>
+                <nav class="hidden">
+                    <button id="btn-reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+                    <button id="btn-home" onclick="homeScreen()">Voltar pra home</button>
+                </nav>
+            </div>
         </main>
 
         <!--Tela 3: Página de Criação de Quizz-->
-        <main class="third-screen hidden">
+        <main class="third-screen">
+
+            <div class="createQuizz-container">
+
+                <section class="sub-screen1">
+                    <h1>Comece pelo começo</h1>
+                    <form action="">
+                        <input type="text" placeholder="Título do seu quizz">
+                        <input type="text" placeholder="URL da imagem do seu quizz">
+                        <input type="text" placeholder="Quantidade de perguntas do quizz">
+                    </form>
+                    
 
 
+
+                </section>
+
+                <section class="sub-screen2">
+                    
+
+                        
+
+
+
+
+                
+                        
+
+                </section>
+
+                <section class="sub-screen3">  
+                    
+                    
+
+
+
+
+
+
+
+
+
+                </section>
+
+                <section class="sub-screen4">  
+                    
+                    
+
+
+
+
+
+
+
+                </section>
+
+            </div>
         </main>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

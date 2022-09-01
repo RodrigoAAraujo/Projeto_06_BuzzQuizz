@@ -1,0 +1,169 @@
+.third-screen{
+    background-color: #f3f3f3;
+    margin-top: -10px;
+}
+.third-screen .createQuizz-container{
+    max-width: 600px;
+    margin: 80px auto;
+}
+
+.third-screen section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.third-screen form{
+    background-color: #ffffff;
+    padding: 20px 16px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.third-screen form input{
+    width: 100%;
+    padding: 11px 14px;
+    margin: 4px 0px;
+    border: #D1D1D1 1px solid;
+    border-radius: 5px;
+}
+.third-screen h1 , .third-screen h2{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23.4px ;
+}
+
+.third-screen  h1{              /*usa h1 pra texto fora do forms e */
+    margin: 20px 0px;
+    text-align: center;         /*h2 para texto negritado dentro do forms*/ 
+}
+
+/* rodrigo */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* nando  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
