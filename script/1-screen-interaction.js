@@ -4,7 +4,7 @@ const FirstScreen = document.querySelector(".first-screen")
 const SecondScreen = document.querySelector(".second-screen")
 const ThirdScreen = document.querySelector(".third-screen")
 let myQuizzesCreated = []
-let alreadyHasQuiz = true
+let alreadyHasQuiz = false
 let clickedQuizz; // Adicionei uma variavel com o quizz que veio no axios.then pq preciso dele na tela 2 :)
 
 function getAndRenderQuizzes(){

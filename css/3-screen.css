@@ -1,3 +1,5 @@
+/*------Major Third Screen-----------*/
+
 .third-screen{
     background-color: #f3f3f3;
     margin-top: -10px;
@@ -6,7 +8,6 @@
     max-width: 600px;
     margin: 80px auto;
 }
-
 .third-screen section{
     width: 100%;
     display: flex;
@@ -14,21 +15,45 @@
     align-items: center;
 }
 
+/*-------form settings--------*/
+
 .third-screen form{
-    background-color: #ffffff;
-    padding: 20px 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
 }
+.third-screen form > div{
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px 16px;
+    margin: 10px 0px;
+}
+.third-screen form ::placeholder{
+    font-weight: 400;
+    font-style: italic;
+    font-size: 19px;
+    color: #c0c0c0;
+}
+.third-screen form  :focus, .third-screen form :hover {
+    border-color: #747474;
+}
 .third-screen form input{
     width: 100%;
-    padding: 11px 14px;
+    padding: 14px 14px 11px;
     margin: 4px 0px;
-    border: #D1D1D1 1px solid;
+    border: #c0c0c0 1px solid;
     border-radius: 5px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #797979;
 }
+.third-screen form ion-icon{
+    font-size: 26px;
+}
+
+/*-----------Text formatting------------*/
+
 .third-screen h1 , .third-screen h2{
     font-weight: 700;
     font-size: 20px;
@@ -36,8 +61,57 @@
 }
 
 .third-screen  h1{              /*usa h1 pra texto fora do forms e */
-    margin: 20px 0px;
+    margin: 38px 0px 20px;
     text-align: center;         /*h2 para texto negritado dentro do forms*/ 
+}
+.third-screen h2{
+    margin: 20px 0px;
+
+}
+
+/*-----button and selected JavaScript-------*/
+
+.third-screen button{
+    background-color: #EC362D;
+    color: #ffffff;
+    border-radius: 15px;
+    padding: 18px 0px;
+    width: 70%;
+    border: none;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: 400;
+}
+.third-screen form header{
+    display: none;
+}
+.third-screen form footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.third-screen form .selected header{
+    display: block;
+}
+.third-screen form .selected footer{
+    display: none;
+
+}
+/*--------Helpful assets----------*/
+
+.third-screen .space{
+    height: 15px;
+}
+.third-screen .hidden{
+    display: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="color"]{
+    height: 20px;    
 }
 
 /* rodrigo */

@@ -71,16 +71,23 @@
 
                 <section class="sub-screen1">
 
+                    <h1>Comece pelo começo</h1>
+                    <form>
+                        <div>
+                            <input type="text" min="20" max="65" placeholder="Título do seu quizz" required>
+                            <input type="url" placeholder="URL da imagem do seu quizz" required>
+                            <input type="number" min="3"placeholder="Quantidade de perguntas do quizz" required>
+                            <input type="number" min="2" placeholder="Quantidade de níveis do quizz" required>
+                        </div>
 
+                        <button>Prosseguir para criar perguntas</button> 
+                    </form>
+                </section>
 
-
-
-
-
-
-
-
-
+                <section class="sub-screen2 hidden">
+                    <h1>Crie suas perguntas</h1>
+                    <form>
+                    </form>
                 </section>
 
                 <section class="sub-screen2">
@@ -143,6 +150,7 @@
 
         </main>
 
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="script/interaction.js"></script>
         <script src="script/1-screen-interaction.js"></script>
