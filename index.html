@@ -65,13 +65,13 @@
         </main>
 
         <!--Tela 3: Página de Criação de Quizz-->
-        <main class="third-screen ">
+        <main class="third-screen">
 
             <div class="createQuizz-container">
 
                 <section class="sub-screen1">
                     <h1>Comece pelo começo</h1>
-                    <form onsubmit="validateSub1()">
+                    <form>
                         <div>
                             <input type="text" min="20" max="65" placeholder="Título do seu quizz" required>
                             <input type="url" placeholder="URL da imagem do seu quizz" required>
@@ -85,43 +85,8 @@
 
                 <section class="sub-screen2 hidden">
                     <h1>Crie suas perguntas</h1>
-                    <form onsubmit="validateSub2()">
-                        <div>
-                            <h2>Pergunta 1</h2>
-                            <input type="text" min="20"placeholder="Texto da pergunta" required>
-                            <input type="color" placeholder="Cor de fundo da pergunta" required>
-                            <h2>Resposta correta</h2>
-                            <input type="text" min="1"placeholder="Resposta correta" required>
-                            <input type="url" placeholder="URL da imagem" required>
-                            <h2>Respostas incorretas</h2>
-                            <div class="wrong-answers">
-                                <input type="text" placeholder="Resposta incorreta 1" required>
-                                <input type="url" placeholder="URL da imagem 1" required>
-
-                                <div class="space"></div>
-
-                                <input type="text" placeholder="Resposta incorreta 1" required>
-                                <input type="text" placeholder="URL da imagem 1" required>
-
-                                <div class="space"></div>
-
-                                <input type="text" placeholder="Resposta incorreta 1" required>
-                                <input type="text" placeholder="URL da imagem 1" required>
-                            </div>
-                        </div>
-
-                        <button>Prosseguir para criar perguntas</button> 
+                    <form>
                     </form>
-                    
-
-                        
-
-
-
-
-                
-                        
-
                 </section>
 
                 <section class="sub-screen3">  
@@ -153,6 +118,7 @@
             </div>
         </main>
 
+        <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="script/interaction.js"></script>
         <script src="script/1-screen-interaction.js"></script>
