@@ -1,7 +1,6 @@
 .third-screen{
     background-color: #f3f3f3;
     margin-top: -10px;
-    height: 100vh;
 }
 .third-screen .createQuizz-container{
     max-width: 600px;
@@ -16,13 +15,14 @@
 }
 
 .third-screen form{
-    background-color: #ffffff;
-    margin: 10px 0px;
-    padding: 20px 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
+}
+.third-screen form > div{
+    background-color: #ffffff;
+    padding: 20px 16px;
 }
 .third-screen form ::placeholder{
     font-weight: 400;
@@ -50,6 +50,10 @@
     margin: 20px 0px;
     text-align: center;         /*h2 para texto negritado dentro do forms*/ 
 }
+.third-screen h2{
+    margin: 20px 0px;
+
+}
 
 .third-screen button{
     background-color: #EC362D;
@@ -62,6 +66,15 @@
     font-size: 18px;
     font-weight: 400;
 }
+
+.third-screen .space{
+    height: 10px;
+}
+
+.third-screen .hidden{
+    display: none;
+}
+
 
 /* rodrigo */
 

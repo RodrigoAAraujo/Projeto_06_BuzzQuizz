@@ -22,6 +22,7 @@
     width: 340px;
     height: 181px;
     position: relative;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%); /*Consertar o gradientte*/
 }
 .first-screen li :hover {
     cursor: pointer;
@@ -31,8 +32,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    margin: auto;   
-    mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%); /*Consertar o gradientte*/
+    margin: auto;  
+    display: none; 
 }
 
 .first-screen li h2{

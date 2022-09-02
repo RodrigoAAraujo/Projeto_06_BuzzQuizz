@@ -65,22 +65,53 @@
         </main>
 
         <!--Tela 3: Página de Criação de Quizz-->
-        <main class="third-screen">
+        <main class="third-screen ">
 
             <div class="createQuizz-container">
 
                 <section class="sub-screen1">
                     <h1>Comece pelo começo</h1>
-                    <form action="">
-                        <input type="text" placeholder="Título do seu quizz">
-                        <input type="text" placeholder="URL da imagem do seu quizz">
-                        <input type="text" placeholder="Quantidade de perguntas do quizz">
-                    </form>
+                    <form onsubmit="validateSub1()">
+                        <div>
+                            <input type="text" min="20" max="65" placeholder="Título do seu quizz" required>
+                            <input type="url" placeholder="URL da imagem do seu quizz" required>
+                            <input type="number" min="3"placeholder="Quantidade de perguntas do quizz" required>
+                            <input type="number" min="2" placeholder="Quantidade de níveis do quizz" required>
+                        </div>
 
-                    <button onclick="goQuestion()">Prosseguir para criar perguntas</button> 
+                        <button>Prosseguir para criar perguntas</button> 
+                    </form>
                 </section>
 
-                <section class="sub-screen2">
+                <section class="sub-screen2 hidden">
+                    <h1>Crie suas perguntas</h1>
+                    <form onsubmit="validateSub2()">
+                        <div>
+                            <h2>Pergunta 1</h2>
+                            <input type="text" min="20"placeholder="Texto da pergunta" required>
+                            <input type="color" placeholder="Cor de fundo da pergunta" required>
+                            <h2>Resposta correta</h2>
+                            <input type="text" min="1"placeholder="Resposta correta" required>
+                            <input type="url" placeholder="URL da imagem" required>
+                            <h2>Respostas incorretas</h2>
+                            <div class="wrong-answers">
+                                <input type="text" placeholder="Resposta incorreta 1" required>
+                                <input type="url" placeholder="URL da imagem 1" required>
+
+                                <div class="space"></div>
+
+                                <input type="text" placeholder="Resposta incorreta 1" required>
+                                <input type="text" placeholder="URL da imagem 1" required>
+
+                                <div class="space"></div>
+
+                                <input type="text" placeholder="Resposta incorreta 1" required>
+                                <input type="text" placeholder="URL da imagem 1" required>
+                            </div>
+                        </div>
+
+                        <button>Prosseguir para criar perguntas</button> 
+                    </form>
                     
 
                         
