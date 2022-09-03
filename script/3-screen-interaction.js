@@ -103,7 +103,7 @@ function renderQuestions(){
             </header>
             <footer>
                 <h2>Pergunta ${i+1}</h2>
-                <ion-icon name="create-outline" onclick="selectThis(this)"></ion-icon>                    
+                <ion-icon name="create-outline" onclick="selectThis(this)" data-identifier="expand"></ion-icon>                    
             </footer>
         </div>
             
@@ -175,7 +175,7 @@ form2.addEventListener("submit", event =>{
 function renderLevels(){
     for(let i = 0; i< basicTraits.levels; i++){
         form3.innerHTML += `
-            <div>
+            <div data-identifier="level">
                 <header>
                     <h2>Nível ${i+1}</h2>
                     <input type="text" min="10" placeholder="Título do nível" required>
@@ -185,7 +185,7 @@ function renderLevels(){
                 </header>
                 <footer>
                     <h2>Nível ${i+1}</h2>
-                    <ion-icon name="create-outline" onclick="selectThis(this)"></ion-icon>                    
+                    <ion-icon name="create-outline" onclick="selectThis(this)" data-identifier="expand"></ion-icon>                    
                 </footer>
             </div>
         `

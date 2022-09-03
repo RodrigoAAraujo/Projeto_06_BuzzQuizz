@@ -24,7 +24,7 @@ function createQuizzQuestions(quizz) {
         // Gera o HTML  
         section.innerHTML +=
         `
-        <div class="quizz-question-container" id='quizz-question-container-${i}'>
+        <div class="quizz-question-container" id="quizz-question-container-${i}" data-identifier="question">
             <div class='quizz-question' id='quizz-question-${i}'>
                 <h1>${question.title}</h1>
             </div>
@@ -58,7 +58,7 @@ function pushAnswers(answers) {
         
         array.push(
             `
-            <div id="ans${i}" onclick='checkAnswer(this)'>
+            <div id="ans${i}" onclick="checkAnswer(this)" data-identifier="answer">
             <img class="quizz-alternative-image" src=${answer.image}>
             <p>${answer.text}</p>
             </div>
@@ -115,7 +115,7 @@ function checkAnswer(clickedElement) {
                 }, 2000);
             }
         }
-    }, 2000);
+    }, 1000);
     
     // Nao deixa mais o usuário clicar
     for (let child of quizzAlterntive.children) {
@@ -139,7 +139,7 @@ function showResults() {
     elementAside.classList.remove("hidden")
     elementAside.innerHTML =
     `
-    <div class="quizz-question-container" id='results'>
+    <div class="quizz-question-container" id="results" data-identifier="quizz-result">
         <div class='quizz-question'>
             <h1>${score}% de acerto: ${resultLevel.title}</h1>
         </div>

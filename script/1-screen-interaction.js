@@ -19,7 +19,7 @@ function getAndRenderQuizzes(){
 
             if (myQuizzesCreated.length == 0 || myQuizzesCreated.forEach((element) => element =! quizId)){
                 otherQuizzes.innerHTML += `
-                <li class="${quizId}" onclick="enterQuiz(this)">
+                <li class="${quizId}" onclick="enterQuiz(this)" data-identifier="quizz-card">
                     <h2>${quizTitle}</h2>
                     <div class="gradient"></div>
                     <img src="${quizImage}"></img>
@@ -32,7 +32,7 @@ function getAndRenderQuizzes(){
                 myQuizzesCreated.forEach((element) =>{
                     const responseGetMyQuizzes = axios.get(`${url}/${element}`)
                     myQuizzes.innerHTML += `
-                    <li class="${quizId}" onclick="enterQuiz(this)">
+                    <li class="${quizId}" onclick="enterQuiz(this)" data-identifier="quizz-card">
                         <h2>${quizTitle}</h2>
                         <div class="gradient"></div>
                         <img src="${quizImage}"></img>
