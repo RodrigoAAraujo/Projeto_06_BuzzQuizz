@@ -1,16 +1,6 @@
 .first-screen{
-    background-color: #f3f3f3;
-    margin-top: -10px;
-}
-.first-screen .createQuizz-container{
-    max-width: 600px;
-    margin: 80px auto;
-}
-.third-screen section{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1050px;
+    margin: 110px auto 0px;
 }
 .first-screen h1{
     font-weight: 700;
@@ -22,6 +12,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    column-gap: 15px;
     row-gap: 12px;
     margin: 16px 0px 38px 0px;
 }

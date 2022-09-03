@@ -3,6 +3,7 @@
 .third-screen{
     background-color: #f3f3f3;
     margin-top: -10px;
+    height:100vh;
 }
 .third-screen .createQuizz-container{
     max-width: 600px;
@@ -47,6 +48,7 @@
     font-size: 17px;
     font-weight: 400;
     color: #797979;
+    resize: vertical;
 }
 .third-screen form ion-icon{
     font-size: 26px;

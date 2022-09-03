@@ -113,7 +113,7 @@ function renderQuestions(){
     `
 }
 
-validation2.addEventListener("input", (objElement) => {
+/*validation2.addEventListener("input", (objElement) => {
         console.log("Entro")
 
         if (objElement.value != ""){
@@ -126,6 +126,7 @@ validation2.addEventListener("input", (objElement) => {
         }
     }
 )
+*/
 
 form2.addEventListener("submit", event =>{
     event.preventDefault()
@@ -173,19 +174,19 @@ form2.addEventListener("submit", event =>{
 function renderLevels(){
     for(let i = 0; i< basicTraits.levels; i++){
         form3.innerHTML += `
-        <div>
-            <header>
-                <h2>Nível ${i+1}</h2>
-                <input type="text" min="10" placeholder="Título do nível" required>
-                <input type="number" min="0" max="100" placeholder="% de acerto mínima" required>
-                <input type="url" placeholder="URL da imagem do nível" required>
-                <textarea type="text" min="30" placeholder="Descrição do nível" required>
-            </header>
-            <footer>
-                <h2>Pergunta ${i+1}</h2>
-                <ion-icon name="create-outline" onclick="selectThis(this)"></ion-icon>                    
-            </footer>
-        </div>
+            <div>
+                <header>
+                    <h2>Nível ${i+1}</h2>
+                    <input type="text" min="10" placeholder="Título do nível" required>
+                    <input type="number" min="0" max="100" placeholder="% de acerto mínima" required>
+                    <input type="url" placeholder="URL da imagem do nível" required>
+                    <textarea cols="30" rows="10" placeholder="Descrição do Nível"></textarea>
+                </header>
+                <footer>
+                    <h2>Nível ${i+1}</h2>
+                    <ion-icon name="create-outline" onclick="selectThis(this)"></ion-icon>                    
+                </footer>
+            </div>
         `
     }
     form3.innerHTML += `
