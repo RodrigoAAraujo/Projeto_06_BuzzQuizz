@@ -1,11 +1,13 @@
-const otherQuizzes = document.querySelector(".first-screen .all-quizzes ul")
-const myQuizzes = document.querySelector(".first-screen .my-quizzes ul")
-const FirstScreen = document.querySelector(".first-screen")
-const SecondScreen = document.querySelector(".second-screen")
-const ThirdScreen = document.querySelector(".third-screen")
-let myQuizzesCreated = []
-let alreadyHasQuiz = false
-let clickedQuizz; // Adicionei uma variavel com o quizz que veio no axios.then pq preciso dele na tela 2 :)
+// Vou colocar essas variáveis no arquivo de script geral (interaction.js), se quiser apagar depois
+
+// const otherQuizzes = document.querySelector(".first-screen .all-quizzes ul")
+// const myQuizzes = document.querySelector(".first-screen .my-quizzes ul")
+// const FirstScreen = document.querySelector(".first-screen")
+// const SecondScreen = document.querySelector(".second-screen")
+// const ThirdScreen = document.querySelector(".third-screen")
+// let myQuizzesCreated = []
+// let alreadyHasQuiz = false
+// let clickedQuizz; 
 
 function getAndRenderQuizzes(){
     const responseGetQuizzes = axios.get(`${url}`)
@@ -19,6 +21,7 @@ function getAndRenderQuizzes(){
                 otherQuizzes.innerHTML += `
                 <li class="${quizId}" onclick="enterQuiz(this)">
                     <h2>${quizTitle}</h2>
+                    <div class="gradient"></div>
                     <img src="${quizImage}"></img>
                 </li>
                 `
@@ -31,6 +34,7 @@ function getAndRenderQuizzes(){
                     myQuizzes.innerHTML += `
                     <li class="${quizId}" onclick="enterQuiz(this)">
                         <h2>${quizTitle}</h2>
+                        <div class="gradient"></div>
                         <img src="${quizImage}"></img>
                     </li>
                     `}

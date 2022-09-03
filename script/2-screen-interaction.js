@@ -307,3 +307,7 @@ function resetQuizz() {
     createHeaderHTML(clickedQuizz);
     createQuizzQuestions(clickedQuizz);
 }
+
+function goHomeScreen() {
+   location.reload();
+}

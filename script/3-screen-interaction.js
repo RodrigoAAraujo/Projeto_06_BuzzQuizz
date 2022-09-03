@@ -1,9 +1,9 @@
 /* Variáveis Padrões*/
 
-const subScreen1 = document.querySelector(".sub-screen1")
-const subScreen2 = document.querySelector(".sub-screen2")
-const subScreen3 = document.querySelector(".sub-screen3")
-const subScreen4 = document.querySelector(".sub-screen4")
+const subScreen1 = document.querySelector(".sub-screen1") 
+const subScreen2 = document.querySelector(".sub-screen2")   
+const subScreen3 = document.querySelector(".sub-screen3")   
+const subScreen4 = document.querySelector(".sub-screen4")   
 
 const form1 = document.querySelector(".third-screen .sub-screen1 form")
 const form2 = document.querySelector(".third-screen .sub-screen2 form")
@@ -42,8 +42,9 @@ function selectThis(option){
 
 //------------Nando------------------------
 
-
-
+function accessQuizz() {
+    
+}
 
 
 

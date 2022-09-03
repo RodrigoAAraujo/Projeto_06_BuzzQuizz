@@ -150,81 +150,27 @@ input[type="color"]{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* nando  */
+.user-created-quizz{
+    position: relative;
+}
 
+.user-created-quizz img {
+    width: 340px;
+    height: 181px;
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 12px;
+}
+
+.user-created-quizz p{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    font-size: 19px;
+}
 
 
 

@@ -21,11 +21,22 @@
     width: 340px;
     height: 181px;
     position: relative;
-    
 }
 .first-screen li :hover {
     cursor: pointer;
 }
+
+.gradient {
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 1)); 
+    /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.01), rgba(129, 129, 129, 0.6), rgba(0, 0, 0, 1)); */
+    border-radius: 5px;
+
+    position: absolute;
+    z-index: 10;
+}
+
 .first-screen li img{
     border-radius: 5px;
     width: 100%;
@@ -36,12 +47,14 @@
 .first-screen li h2{
     position: absolute;
     z-index: 2;
-    bottom: 8px;
+    bottom: 15px;
     left: 16px;
     font-weight: 400;
     font-size: 19px;
     line-height: 22.27px;
     color: #ffffff;
+
+    z-index: 20;
 }
 
 

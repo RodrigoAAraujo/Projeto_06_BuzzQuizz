@@ -114,26 +114,34 @@ nav {
     height: fit-content;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+
 }
 
-#btn-reset-quizz {
+#nav-btn-quizz {
     width: 260px;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-color: #EC362D;
     border: none;
     border-radius: 15px;
     font-size: 18px;
     color: white;
     cursor: pointer;
+       
 }
 
-#btn-home {
+#nav-btn-home {
     background-color: inherit;
     border: none;
     color: #818181;
     font-size: 18px;
     padding-top: 10px;
     cursor: pointer;
+
+    margin-top: 0px;
 }

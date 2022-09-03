@@ -59,8 +59,8 @@
                     <!-- Aqui fica o feedback final -->
                 </aside>
                 <nav class="hidden">
-                    <button id="btn-reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
-                    <button id="btn-home" onclick="homeScreen()">Voltar pra home</button>
+                    <button id="nav-btn-quizz" id="reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+                    <button id="nav-btn-home" id="btn-home" onclick="goHomeScreen()">Voltar pra home</button>
                 </nav>
             </div>
         </main>
@@ -97,13 +97,18 @@
                     </form>
                 </section>
 
-                <section class="sub-screen4">  
-                    
-                    
+                <section class="sub-screen4 hidden">  
+                    <h1>Seu quizz está pronto!</h1>
 
+                    <div class="user-created-quizz">
+                        <img src="https://www.melhoresdestinos.com.br/wp-content/uploads/2020/08/novo-castelo-cinderela-disney-capa2019.jpg">
+                        <p>text</p>
+                    </div>                    
 
-
-
+                    <nav>
+                        <button id="nav-btn-quizz" onclick="accessQuizz()">Acessar Quizz</button> <!-- Aqui aproveitei o CSS da tela 2-->
+                        <button id="nav-btn-home" onclick="goHomeScreen()">Voltar pra home</button>
+                    </nav>
 
 
                 </section>
@@ -117,5 +122,6 @@
         <script src="script/interaction.js"></script>
         <script src="script/1-screen-interaction.js"></script>
         <script src="script/2-screen-interaction.js"></script>
+        <script src="script/3-screen-interaction.js"></script>
     </body>
 </html>
