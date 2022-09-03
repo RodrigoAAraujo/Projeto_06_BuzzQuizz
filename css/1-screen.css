@@ -1,7 +1,6 @@
-.first-screen {
+.first-screen{
     max-width: 1050px;
-    margin: 0px auto;
-    padding-top: 40px;
+    margin: 110px auto 0px;
 }
 .first-screen h1{
     font-weight: 700;
@@ -22,7 +21,7 @@
     width: 340px;
     height: 181px;
     position: relative;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%); /*Consertar o gradientte*/
+    
 }
 .first-screen li :hover {
     cursor: pointer;
@@ -32,8 +31,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    margin: auto;  
-    display: none; 
 }
 
 .first-screen li h2{
@@ -53,7 +50,6 @@
     align-items: center;
 }
 .first-screen .my-interface button{
-    margin-left: 15px;
     width: 30px;
     height: 30px;
     background-color: #EC362D;
@@ -77,7 +73,6 @@
     font-weight: 400;
     line-height: 23.44px;
     text-align: center;
-    width: 250px;
 }
 .first-screen .no-quiz button{
     background-color: #ffffff;
@@ -105,20 +100,15 @@
     .first-screen ul{
         flex-direction: column;
         align-items: center;
+        column-gap: 0px;
     }
     .first-screen ul li{   
-        max-width: 60%;
-        min-width: 340px;
-        height: 0;
-        padding-top: 53.23%;
-    }.first-screen ul li img{
-        position: absolute;
-        top: 0; left: 0;
-        height: 100%;
-        width: 100%;    
+        width: 100%;
+        height: 382px;
+        height: auto;
     }
-    .first-screen {
-        width: 95%;
-
+    .first-screen img{
+        max-width: 100%;
     }
 }
+

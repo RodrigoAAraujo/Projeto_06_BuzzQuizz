@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <title>BuzzQuizz</title>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-------css Styles------->
         <link rel="stylesheet" href="./css/reset.css">
@@ -18,25 +18,26 @@
 
         <!--Tela 1: Lista de Quizzes -->
         <main class="first-screen">
-            <div class="my-quizzes">
-                <div class="my-interface">   
-                    <h1>Seus Quizzes</h1>
-                    <button onclick="goCreateQuizz()">+</button>
+            <div class="container-screen1">
+                <div class="my-quizzes">
+                    <div class="my-interface">   
+                        <h1>Seus Quizzes</h1>
+                        <button onclick="goCreateQuizz()">+</button>
+                    </div>
+                    <ul>
+                    </ul>
+                    <div class="hidden no-quiz">
+                        <p>Você não criou nenhum quizz ainda :(</p>
+                        <button onclick="goCreateQuizz()">Criar Quizz</button>
+                    </div>
                 </div>
-                <ul>
-                </ul>
-                <div class="hidden no-quiz">
-                    <p>Você não criou nenhum quizz ainda :(</p>
-                    <button onclick="goCreateQuizz()">Criar Quizz</button>
+
+                <div class="all-quizzes">
+                    <h1>Todos os quizzes</h1>
+                    <ul>
+
+                    </ul>
                 </div>
-                
-            </div>
-
-            <div class="all-quizzes">
-                <h1>Todos os quizzes</h1>
-                <ul>
-
-                </ul>
             </div>
         </main>
 
@@ -90,6 +91,7 @@
                     </form>
                 </section>
 
+<<<<<<< HEAD
                 <section class="sub-screen2">
                     
 
@@ -108,6 +110,12 @@
 
 
 
+=======
+                <section class="sub-screen3 hidden">  
+                    <h1>Agora, decida os níveis!</h1>
+                    <form>
+                    </form>
+>>>>>>> 9b549c1d6291bff0457ff5ebfa6291e0b7656d36
                 </section>
 
                 <section class="sub-screen4">  

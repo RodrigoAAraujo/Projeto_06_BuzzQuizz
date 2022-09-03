@@ -12,15 +12,15 @@ li{
     list-style: none;
 }
 
-header {
-    width: 100%;
+body > header {
+    width: 100vw;
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     background-color: #EC362D;
     font-size: 37px;
     color: white;

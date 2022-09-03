@@ -22,15 +22,21 @@ function getAndRenderQuizzes(){
                     <img src="${quizImage}"></img>
                 </li>
                 `
-            }else{
-                alreadyHasQuiz = true
-                myQuizzes.innerHTML += `
-                <li class="${quizId}" onclick="enterQuiz(this)">
-                    <h2>${quizTitle}</h2>
-                    <img src="${quizImage}"></img>
-                </li>
-                `
             }
+
+            if(alreadyHasQuiz == true){
+                
+                myQuizzesCreated.forEach((element) =>{
+                    const responseGetMyQuizzes = axios.get(`${url}/${element}`)
+                    myQuizzes.innerHTML += `
+                    <li class="${quizId}" onclick="enterQuiz(this)">
+                        <h2>${quizTitle}</h2>
+                        <img src="${quizImage}"></img>
+                    </li>
+                    `}
+                )
+            }
+            
 
             
         });

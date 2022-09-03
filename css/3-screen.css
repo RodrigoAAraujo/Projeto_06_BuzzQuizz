@@ -3,6 +3,7 @@
 .third-screen{
     background-color: #f3f3f3;
     margin-top: -10px;
+    height:100vh;
 }
 .third-screen .createQuizz-container{
     max-width: 600px;
@@ -38,7 +39,7 @@
 .third-screen form  :focus, .third-screen form :hover {
     border-color: #747474;
 }
-.third-screen form input{
+.third-screen form input, .third-screen form textarea{
     width: 100%;
     padding: 14px 14px 11px;
     margin: 4px 0px;
@@ -47,6 +48,7 @@
     font-size: 17px;
     font-weight: 400;
     color: #797979;
+    resize: vertical;
 }
 .third-screen form ion-icon{
     font-size: 26px;
@@ -82,6 +84,8 @@
     font-size: 18px;
     font-weight: 400;
 }
+
+
 .third-screen form header{
     display: none;
 }
@@ -90,9 +94,11 @@
     align-items: center;
     justify-content: space-between;
 }
-
 .third-screen form .selected header{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: inherit;
 }
 .third-screen form .selected footer{
     display: none;
@@ -115,6 +121,10 @@ input[type="color"]{
 }
 
 /* rodrigo */
+
+.third-screen form .wrong-answers{
+    width: 100%;
+}
 
 
 
