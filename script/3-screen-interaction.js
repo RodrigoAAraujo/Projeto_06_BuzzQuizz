@@ -197,40 +197,26 @@ function renderQuestions(){
         <div>
             <header>
                 <h2>Pergunta ${i+1}</h2>
-                <div>
-                    <input type="text" min="20"placeholder="Texto da pergunta" required>
-                    <span class="error"></span>
-                </div>
-                <div>
-                    <input type="color" placeholder="Cor de fundo da pergunta" required>
-                    <span class="error"></span>
-                </div>
+
+                <input type="text" min="20"placeholder="Texto da pergunta" required>
+                <input type="color" placeholder="Cor de fundo da pergunta" required>
+
                 <h2>Resposta correta</h2>
-                <div>
-                    <input type="text" min="1" placeholder="Resposta correta" required>
-                    <span class="error"></span>
-                </div>
-                <div>
-                    <input type="url" placeholder="URL da imagem" required>
-                    <span class="error"></span>
-                </div> 
+
+                <input type="text" min="1" placeholder="Resposta correta" required>
+                <input type="url" placeholder="URL da imagem" required>
+
                 <h2>Respostas incorretas</h2>
+
                 <div class="wrong-answers">
-                    <div>
-                        <input type="text" min="1" placeholder="Resposta incorreta 1" required>
-                        <span class="error"></span>
-                    </div>
-                    <div>
-                        <input type="url" placeholder="URL da imagem 1" required>
-                        <span class="error"></span>
-                    </div>
+                    <input type="text" min="1" placeholder="Resposta incorreta 1" required>
+                    <input type="url" placeholder="URL da imagem 1" required>
 
                     <div class="space"></div>
-                        
+                            
                     <div class="validation">
                         <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 2 (opcional)">
                         <input class="maybe" type="url" placeholder="URL da imagem 2 (opcional)">
-                        <span class="error"></span>
                     </div>
 
                     <div class="space"></div>
@@ -238,7 +224,6 @@ function renderQuestions(){
                     <div class="validation">
                         <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 3 (opcional)">
                         <input class="maybe" type="url" placeholder="URL da imagem 3 (opicional)">
-                        <span class="error"></span>
                     </div>
                 </div>
             </header>
@@ -353,6 +338,9 @@ function renderLevels(){
 form3.addEventListener("submit", event =>{    
     event.preventDefault()
 
+    levelsBase = []
+
+
     let validation = false
 
     let individualLevel = document.querySelectorAll(".sub-screen3 header")
@@ -365,8 +353,8 @@ form3.addEventListener("submit", event =>{
             image: receive[2].value,
             text: receive[3].value,
             minValue: Number(receive[1].value)
-        }
-        levelsBase.push(LevelTraits)  
+        } 
+        levelsBase.push(LevelTraits)
     })
 
     const validationError = form3.querySelectorAll(".validatePercentage")
@@ -376,7 +364,7 @@ form3.addEventListener("submit", event =>{
         }
     })
 
-    if (validation){
+    if (validation == true){
         postQuiz()
     }else{
         const validationErrorBlockSelected = form3.querySelector(".selected .validatePercentage")
@@ -402,6 +390,8 @@ function resetValidation(block){
 /* -----Quizz Creation---------*/
 
 function postQuiz(){
+
+
     let objectToSend= 
     {
         title: basicTraits.title,
@@ -409,7 +399,7 @@ function postQuiz(){
         questions: questionsBase,
         levels: levelsBase
     }
-    
+    console.log(objectToSend)
     let promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" , objectToSend)
 
     promise.then(storageQuiz)
@@ -462,7 +452,8 @@ function storageQuiz(response){
 }
 
 function problem(error){
-    window.location.reload()
+    console.log("problem")
+
 }
 
 function renderOwnQuiz(){
