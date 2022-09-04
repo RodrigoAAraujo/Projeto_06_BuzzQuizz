@@ -25,7 +25,7 @@ body > header {
     font-size: 37px;
     color: white;
     font-weight: 700;
-    z-index: 100;
+    z-index: 1000000;
 }
 
 
