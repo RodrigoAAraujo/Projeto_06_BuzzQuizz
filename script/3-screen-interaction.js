@@ -72,15 +72,28 @@ function selectThis2(option){
         
         }
 
-        SelectedItem.classList.remove("selected")
-        block.classList.add("selected")
-        currentSelected = block
-    }    
 
-    let previousObject = block.previousElementSibling
-    if(previousObject !== null){
-        previousObject.scrollIntoView()
-    }
+        let counter = 0
+        currentSelected = block
+        let requiredBlock = SelectedItem.querySelectorAll("[required]")
+        
+        requiredBlock.forEach((element) => {
+            if(element.checkValidity()){
+                counter ++
+            }else{
+                const fakeSubmitButton = block.parentNode.querySelector("button")
+                fakeSubmitButton.click()
+                SelectedItem.scrollIntoView(false)
+            }
+        })
+        if (counter == requiredBlock.length){
+            block.classList.add("selected")
+            SelectedItem.classList.remove("selected")
+            block.scrollIntoView(false)
+        }
+
+    }    
+    
 }
 
 function selectThis3(option){
@@ -92,16 +105,25 @@ function selectThis3(option){
         block.classList.add("selected")
         
     }else{
-
-        SelectedItem.classList.remove("selected")
-        block.classList.add("selected")
+        let counter = 0
         currentSelected = block
+        let requiredBlock = SelectedItem.querySelectorAll("[required]")
+        
+        requiredBlock.forEach((element) => {
+            if(element.checkValidity()){
+                counter ++
+            }else{
+                const fakeSubmitButton = block.parentNode.querySelector("button")
+                fakeSubmitButton.click()
+                SelectedItem.scrollIntoView(false)
+            }
+        })
+        if (counter == requiredBlock.length){
+            block.classList.add("selected")
+            SelectedItem.classList.remove("selected")
+            block.scrollIntoView(false)
+        }
     }    
-
-    let previousObject = block.previousElementSibling
-    if(previousObject !== null){
-        previousObject.scrollIntoView()
-    }
 }
 
 function validateCurrent(){
@@ -279,7 +301,7 @@ function renderLevels(){
                     <input type="text" min="10" placeholder="Título do nível" required>
                     <input type="number" min="0" max="100" placeholder="% de acerto mínima" required>
                     <input type="url" placeholder="URL da imagem do nível" required>
-                    <textarea cols="30" rows="10" min="30" placeholder="Descrição do Nível" required></textarea>
+                    <textarea type="text" cols="30" rows="10" minlength="30" placeholder="Descrição do Nível" required></textarea>
                 </header>
                 <footer>
                     <h2>Nível ${i+1}</h2>
@@ -328,9 +350,8 @@ function postQuiz(){
     
     
     let promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" , objectToSend)
-    console.log(objectToSend)
-    promise.then(storageQuiz())
-    promise.catch(problem())
+    promise.then(storageQuiz)
+    promise.catch(problem)
 
 
 }
