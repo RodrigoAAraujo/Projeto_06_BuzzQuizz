@@ -1,7 +1,7 @@
 const mainElement = document.querySelector('.second-screen')
 const section = document.querySelector('.second-screen section')
 let correctAnswers = [];
-let questionAmt = 0;
+let questionsAmt = 0;
 let correctAnswerAmt = 0;                                     
 
 function createHeaderHTML(quizz) {
@@ -85,7 +85,7 @@ function checkAnswer(clickedElement) {
         child.classList.add('wrong-answer')
         child.removeAttribute("onclick")
         
-        // Coloca gradiente
+        // Coloca efeito esbranquiçado
         if(!child.classList.contains('selected')){
             child.classList.add('whitish-gradient')
         }
@@ -110,7 +110,7 @@ function checkAnswer(clickedElement) {
     
     // Se respondeu tudo, exibe o resultado e scrolla no resultado
     let answersAmt = document.querySelectorAll('.selected').length; 
-    if(answersAmt === questionAmt) {
+    if(answersAmt === questionsAmt) {
         setTimeout(()=> {
             showResults();
             let resultElement = document.querySelector('#results')
@@ -264,7 +264,9 @@ function post() {
     }
 
     let response = axios.post(`${url}`, quizz);
-    response.catch(0)
+    response.catch(()=>{
+        location.reload()
+    })
 
     response.then((a)=>{
         // console.log(a)
@@ -273,34 +275,9 @@ function post() {
 
 function resetQuizz() {
     correctAnswers = [];
-    questionAmt = 0;
+    questionsAmt = 0;
     correctAnswerAmt = 0;  
 
-    mainElement.innerHTML =
-    `
-    <div class="quizz-header">
-            <div class="bg-opacity">
-                <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
-            </div>
-                <h1>teste</h1>
-    </div>
-            
-    <div class="container">
-        <section>
-            <!-- Aqui ficam as perguntas -->
-        </section>
-        <aside class="hidden">
-            <!-- Aqui fica o feedback final -->
-        </aside>
-        <nav class="hidden">
-            <button id="btn-reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
-            <button id="btn-home" onclick="homeScreen()">Voltar pra home</button>
-        </nav>
-    </div>
-    `
-    console.log(clickedQuizz);
-    createHeaderHTML(clickedQuizz);
-    createQuizzQuestions(clickedQuizz);
 }
 
 function goHomeScreen() {

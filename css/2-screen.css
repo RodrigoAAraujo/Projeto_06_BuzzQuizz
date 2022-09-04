@@ -155,11 +155,20 @@ nav {
         padding: 0 40px;
     }
 
+    .second-screen .container aside {
+        width: 70%;
+        padding: 0 40px;
+    }
+
     .quizz-question-container {
         width: 100%;
     }
 
     .quizz-alternative-image {
+        width: 270px;
+    }
+
+    .quizz-result-image{
         width: 270px;
     }
 
@@ -170,8 +179,16 @@ nav {
     .second-screen .container section {
         width: 90%;
     }
+    
+    .second-screen .container aside {
+        width: 90%;
+    }
 
     .quizz-alternative-image {
+        width: 250px;
+    }
+
+    .quizz-result-image {
         width: 250px;
     }
 
@@ -180,6 +197,11 @@ nav {
 @media (max-width: 530px) {
 
     .second-screen .container section {
+        width: 100%;
+        padding: 0px;
+    }
+
+    .second-screen .container aside {
         width: 100%;
         padding: 0px;
     }
@@ -201,10 +223,8 @@ nav {
 
     .quizz-result-image {
         width: 200px;
-        height: 270px;
-        object-fit: cover;
-        padding: 10px 10px 10px 0;
     }
+    
 }
 
 

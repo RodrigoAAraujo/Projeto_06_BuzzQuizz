@@ -19,6 +19,9 @@ let basicTraits = {}
 let questionsBase = []
 let levelsBase = []
 
+/* Quizz criado (usado para o botao de acessar quizz após criado) */
+let createdQuizz;
+
 /*------funções em comum---------*/
 
 
@@ -330,21 +333,57 @@ function postQuiz(){
     
     let promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" , objectToSend)
     console.log(objectToSend)
-    promise.then(storageQuiz())
-    promise.catch(problem())
+    promise.then(storageQuiz)
+    promise.catch(problem)
 
 
 }
 
+function accessQuizz() {
+    FirstScreen.classList.add("hidden")
+    SecondScreen.classList.remove("hidden")
+    ThirdScreen.classList.add("hidden")
+    const response = axios.get(`${url}/${createdQuizz.id}`);
+    response.catch(()=>{
+        location.reload();
+    })
+    
+    response.then((response)=>{
+        const quizz = response.data;
+        createHeaderHTML(quizz)
+        createQuizzQuestions(quizz)
+        clickedQuizz = quizz;
+    })
+}
+
 function storageQuiz(response){
-    console.log(response)
+    createdQuizz = response.data 
+    if(localStorage.getItem("userQuizzList")){
+        const unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"))
+        const quizzInfo = {
+            id: response.data.id,
+            title: response.data.title
+        }
+        unserializedList.push(quizzInfo)
+        const serializedQuizz = JSON.stringify(unserializedList)
+        localStorage.setItem("userQuizzList", serializedQuizz)
+
+    } else {
+        const quizzInfo = [
+            {
+                id: response.data.id,
+                title: response.data.title
+            }
+        ]
+        localStorage.setItem("userQuizzList", JSON.stringify(quizzInfo));
+    }
 
 
     renderOwnQuiz()
 }
 
 function problem(error){
-    console.log(error.response)
+    console.log(error)
 }
 
 function renderOwnQuiz(){
@@ -359,8 +398,6 @@ function renderOwnQuiz(){
     `
 }
 
-function accessQuizz() {
-    
-}
+
 
 
