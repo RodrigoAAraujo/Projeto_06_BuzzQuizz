@@ -1,13 +1,23 @@
 /*------Major Third Screen-----------*/
-
 .third-screen{
     background-color: #f3f3f3;
-    margin-top: -10px;
     height:100vh;
+    position: absolute;
+    top: 70px; left:0;
+    width: 100%;
+}
+.third-screen .color-gray{
+    z-index: -1;
+    background-color: #f3f3f3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
 }
 .third-screen .createQuizz-container{
     max-width: 600px;
-    margin: 80px auto;
+    margin: 0px auto;
 }
 .third-screen section{
     width: 100%;
@@ -85,6 +95,10 @@
     font-weight: 400;
 }
 
+input :invalid{
+    background-color: #FFE9E9;
+}
+
 
 .third-screen form header{
     display: none;
@@ -120,11 +134,18 @@ input[type="color"]{
     height: 20px;    
 }
 
-/* rodrigo */
-
 .third-screen form .wrong-answers{
     width: 100%;
 }
+
+/*error Validation */
+
+.third-screen form .error {
+    color: #EC362D;
+    font-weight: 400px;
+    line-height: 18.75px;
+}
+
 
 
 

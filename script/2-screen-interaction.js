@@ -1,5 +1,5 @@
 const mainElement = document.querySelector('.second-screen')
-const section = document.querySelector('.second-screen section')
+//O objeto que estava aqui, eu movi para a única função que usava ele
 let correctAnswers = [];
 let questionsAmt = 0;
 let correctAnswerAmt = 0;                                     
@@ -15,6 +15,7 @@ function createHeaderHTML(quizz) {
 }
 
 function createQuizzQuestions(quizz) {  
+    const section = document.querySelector('.second-screen section')
     let i = 0;
     let h1Container;
     let answersHTML;
@@ -47,7 +48,7 @@ function createQuizzQuestions(quizz) {
             alternatives.innerHTML += answersHTML[j];
         }
 
-        questionAmt++;
+        questionsAmt++;
         i++;
     }
 }
@@ -158,7 +159,7 @@ function calculateScore() {
         }
     }
 
-    const score = Math.round((correctAnswerAmt / questionAmt)*100)
+    const score = Math.round((correctAnswerAmt / questionsAmt)*100)
     return score;
 
 }
@@ -269,15 +270,14 @@ function post() {
     })
 
     response.then((a)=>{
-        // console.log(a)
     })
 } 
 
 function resetQuizz() {
     correctAnswers = [];
     questionsAmt = 0;
-    correctAnswerAmt = 0;  
-
+    correctAnswerAmt = 0;
+    enterQuiz(clickedQuizz.id)
 }
 
 function goHomeScreen() {

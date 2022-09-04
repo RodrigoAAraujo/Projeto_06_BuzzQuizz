@@ -87,9 +87,37 @@ function goCreateQuizz(){
 }
 
 function enterQuiz(id){
-    FirstScreen.classList.add("hidden")
-    SecondScreen.classList.remove("hidden")
-    let QuizzId = id.classList
+    let QuizzId = null
+    
+    if(!FirstScreen.classList.contains("hidden")){
+        FirstScreen.classList.add("hidden")
+        SecondScreen.classList.remove("hidden")
+        QuizzId = id.classList
+    }else{
+        QuizzId = id
+        SecondScreen.innerHTML = `
+        <div class="quizz-header">
+            <div class="bg-opacity">
+                <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
+            </div>
+            <h1>teste</h1>
+        </div>
+    
+        <div class="container">
+            <section>
+                <!-- Aqui ficam as perguntas -->
+            </section>
+            <aside class="hidden">
+                <!-- Aqui fica o feedback final -->
+            </aside>
+            <nav class="hidden">
+                <button id="nav-btn-quizz" id="reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+                <button id="nav-btn-home" id="btn-home" onclick="goHomeScreen()">Voltar pra home</button>
+            </nav>
+        </div>
+        `
+    }
+
     const response = axios.get(`${url}/${QuizzId}`);
     response.catch(()=>{
         location.reload();

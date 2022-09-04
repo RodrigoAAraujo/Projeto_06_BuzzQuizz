@@ -44,3 +44,9 @@ table {
 input{
 	outline: none;
 }
+p, h1, h2{
+	word-break: break-word
+}
+img{
+	width: 100%;
+}
