@@ -34,7 +34,8 @@ function selectThis(option){
 
     let previousObject = block.previousElementSibling
     if(previousObject !== null){
-        previousObject.scrollIntoView()
+        previousObject.scrollIntoView() 
+        // previousObject.scrollIntoView({behavior: "smooth", block: "center"}); Caso queira scrollar suavemente
     }
 }
 

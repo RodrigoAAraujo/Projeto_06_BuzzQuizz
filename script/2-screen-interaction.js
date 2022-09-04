@@ -32,6 +32,7 @@ function createQuizzQuestions(quizz) {
             </div>
         </div>
         `
+        
         // Pega as cores de cada pergunta e joga no HTML
         h1Container = document.querySelector(`#quizz-question-${i}`);
         h1Container.style.backgroundColor = question.color;
@@ -82,6 +83,7 @@ function checkAnswer(clickedElement) {
 
     for (let child of quizzAlterntive.children) {
         child.classList.add('wrong-answer')
+        child.removeAttribute("onclick")
         
         // Coloca gradiente
         if(!child.classList.contains('selected')){
@@ -101,27 +103,20 @@ function checkAnswer(clickedElement) {
     
     setTimeout(() => {
         if(nextElement) {
-            nextElement.scrollIntoView({behavior: "smooth", block: "center"});
-        } else{
-            let answersAmt = document.querySelectorAll('.selected').length; 
-
-            // Se respondeu tudo, exibe o resultado e scrolla no resultado
-            if(answersAmt === questionAmt) {
-                
-                setTimeout(() => {
-                    showResults();
-                    let resultElement = document.querySelector('#results')
-                    resultElement.scrollIntoView({behavior: "smooth", block: "center"});
-                }, 2000);
-            }
+            nextElement.scrollIntoView({behavior: "smooth", block: "center"});        
         }
-    }, 1000);
     
-    // Nao deixa mais o usuário clicar
-    for (let child of quizzAlterntive.children) {
-        child.removeAttribute("onclick");
+    }, 2000);
+    
+    // Se respondeu tudo, exibe o resultado e scrolla no resultado
+    let answersAmt = document.querySelectorAll('.selected').length; 
+    if(answersAmt === questionAmt) {
+        setTimeout(()=> {
+            showResults();
+            let resultElement = document.querySelector('#results')
+            resultElement.scrollIntoView({behavior: "smooth", block: "center"});
+        }, 2000)
     }
-
 }
 
 function showResults() {
