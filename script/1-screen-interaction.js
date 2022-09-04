@@ -1,13 +1,3 @@
-// Vou colocar essas variáveis no arquivo de script geral (interaction.js), se quiser apagar depois
-
-// const otherQuizzes = document.querySelector(".first-screen .all-quizzes ul")
-// const myQuizzes = document.querySelector(".first-screen .my-quizzes ul")
-// const FirstScreen = document.querySelector(".first-screen")
-// const SecondScreen = document.querySelector(".second-screen")
-// const ThirdScreen = document.querySelector(".third-screen")
-// let myQuizzesCreated = []
-// let alreadyHasQuiz = false
-// let clickedQuizz; 
 
 function getAndRenderQuizzes(){
     const responseGetQuizzes = axios.get(`${url}`)

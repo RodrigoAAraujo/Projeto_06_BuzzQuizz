@@ -187,15 +187,15 @@ function renderQuestions(){
                     <div class="space"></div>
                         
                     <div class="validation">
-                        <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 2">
-                        <input class="maybe" type="url" placeholder="URL da imagem 2">
+                        <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 2 (opcional)">
+                        <input class="maybe" type="url" placeholder="URL da imagem 2 (opcional)">
                     </div>
 
                     <div class="space"></div>
 
                     <div class="validation">
-                        <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 3">
-                        <input class="maybe" type="url" placeholder="URL da imagem 3">
+                        <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 3 (opcional)">
+                        <input class="maybe" type="url" placeholder="URL da imagem 3 (opicional)">
                     </div>
                 </div>
             </header>
@@ -337,8 +337,6 @@ function postQuiz(){
 
 function storageQuiz(response){
     console.log(response)
-
-
     renderOwnQuiz()
 }
 
@@ -359,7 +357,7 @@ function renderOwnQuiz(){
 }
 
 function accessQuizz() {
-    
+    enterQuiz(id)
 }
 
 
