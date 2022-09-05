@@ -194,7 +194,7 @@ function renderQuestions(){
                 <h2>Pergunta ${i+1}</h2>
 
                 <input type="text" min="20"placeholder="Texto da pergunta" required>
-                <input type="text" class="input-color" placeholder="Cor de fundo da pergunta" value="#000000" required>
+                <input type="text" class="input-color" placeholder="Cor de fundo da pergunta (hexadecimal)" value="#000000" pattern="[#]{1}[a-fA-F0-9]{6}" required>
 
                 <h2>Resposta correta</h2>
 
