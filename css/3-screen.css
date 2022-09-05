@@ -73,9 +73,9 @@
     line-height: 23.4px ;
 }
 
-.third-screen  h1{              /*usa h1 pra texto fora do forms e */
+.third-screen  h1{              
     margin: 38px 0px 20px;
-    text-align: center;         /*h2 para texto negritado dentro do forms*/ 
+    text-align: center;        
 }
 .third-screen h2{
     margin: 20px 0px;
@@ -152,31 +152,6 @@ input[type="color"]{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* nando  */
 .user-created-quizz{
     position: relative;
 }

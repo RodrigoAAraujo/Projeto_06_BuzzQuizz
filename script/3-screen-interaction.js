@@ -11,9 +11,6 @@ const form3 = document.querySelector(".third-screen .sub-screen3 form")
 
 const subScreen1Fields = document.querySelectorAll(".sub-screen1 [required]")
 
-
-
-
 /* Variáveis de Informações dos formulários*/
 
 let basicTraits = {}
@@ -372,19 +369,6 @@ form3.addEventListener("submit", event =>{
     }
 })
 
-function resetValidation(block){
-    const fieldProblem = block.querySelectorAll("[required]")
-    fieldProblem.forEach((element)=> {
-        element.parentNode.querySelector(".error").innerHTML = ""
-        if(element.classList.contains("problem")){
-            element.classList.remove("problem")
-        }
-
-    })
-
-
-}
-
 /* -----Quizz Creation---------*/
 
 function postQuiz(){
@@ -396,7 +380,6 @@ function postQuiz(){
         questions: questionsBase,
         levels: levelsBase
     }
-    // console.log(objectToSend)
     let promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" , objectToSend)
 
     promise.then(storageQuiz)
@@ -423,7 +406,6 @@ function accessQuizz() {
 }
 
 function storageQuiz(response){
-    // console.log(response)
     createdQuizz = response.data 
     if(localStorage.getItem("userQuizzList")){
         const unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"))

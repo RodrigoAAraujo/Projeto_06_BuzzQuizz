@@ -164,152 +164,153 @@ function calculateScore() {
 
 }
 
-function post() {   
-    quizz = {
-        title: "USE ESSE PARA TESTAR GET: o quao potterhead vc é?",
-        image: "https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg",
-        questions: [
-            {
-                title: "em qual animal olho-tonto transfigurou malfoy?",
-                color: "#434CA0",
-                answers: [
-                    {
-                        text: "gato",
-                        image: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=90&strip=info&w=1024&resize=1200,800" ,
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "rato",
-                        image: "https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/01-rat-friends-nationalgeographic_1162144.jpg?w=1600&h=900" ,
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "sapo",
-                        image: "https://www.infoescola.com/wp-content/uploads/2008/07/sapo-561077704.jpg" ,
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "furao",
-                        image: "https://www.infoescola.com/wp-content/uploads/2008/06/fur%C3%A3o_138806276.jpg" ,
-                        isCorrectAnswer: true
-                    }
-                ]
-            },
-
-            {
-                title: "qual dos objetos NAO é horcrux?",
-                color: "#A0438D",
-                answers: [
-                    {   
-                        text: "harry",
-                        image: "https://static.wikia.nocookie.net/harrypotter/images/2/20/C93ced28e52082d80becd80a685e2766.jpg/revision/latest?cb=20201004232712&path-prefix=pt-br" ,
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "livro monstro",
-                        image: "https://img.clasf.com.br/2019/09/19/livro-dos-monstros-harry-potter-20190919213221.3947180015.jpg" ,
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "anel de brinquedo",
-                        image: "https://cf.shopee.com.br/file/5abbed73a0f94750707a9a38cc9eb29f" ,
-                        isCorrectAnswer: true
-                    },
-                    {
-                        text: "diadema",
-                        image: "https://cf.shopee.com.br/file/4b4a06ac91333adeaddbcf86068db3ad" ,
-                        isCorrectAnswer: false
-                    }
-                ]
-            },
-
-            {
-                title: "qual é metade-bruxo(a)?",
-                color: "#EC362D",
-                answers: [
-                    {   
-                        text: "rony",
-                        image: "https://static1.purebreak.com.br/articles/9/97/35/9/@/384519-de-harry-potter-prove-que-voce-sabe-t-diapo-4.jpg" ,
-                        isCorrectAnswer: false
-                    },
-                    {
-                        text: "hermione",
-                        image: "https://epipoca.com.br/wp-content/uploads/2021/02/Hermione-Emma-Watson-em-Harry-Potter-Reproducao.jpg" ,
-                        isCorrectAnswer: true
-                    },
-                ]
-            }
-
-        ],
-
-        levels: [
-            {
-                title:"vc nao e bruxo",
-                image:"https://i.pinimg.com/originals/42/8e/34/428e34c70768c48b138dd9a3b60b157b.jpg",
-                text: 'patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore.',
-                minValue: 0
-            },
-            {
-                title:"voce é praticamente um aluno de hogwarts",
-                image:"https://images-cdn.9gag.com/photo/aV3PzDn_700b.jpg",
-                text: 'Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.',
-                minValue: 50
-            } ,
-            {
-                title:"PERFEITO! voce conjuraria facilmente um patrono",
-                image:"https://static1.purebreak.com.br/articles/9/10/32/69/@/434382--harry-potter-quiz-qual-seria-o-seu-ex-opengraph_1200-2.jpg",
-                text: "vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry.",
-                minValue: 100
-            } 
-        ]
-    }
-
-    let response = axios.post(`${url}`, quizz);
-    response.catch(()=>{
-        location.reload()
-    })
-
-    response.then((a)=>{
-        // console.log(a)
-    })
-
-
-} 
-
 function resetQuizz() {
     questionsAmt = 0;
     correctAnswerAmt = 0;  
     mainElement.innerHTML =
-
+    
     `       
-        <div class="quizz-header">
-            <div class="bg-opacity">
-                <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
-            </div>
-            <h1>teste</h1>
+    <div class="quizz-header">
+        <div class="bg-opacity">
+            <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
         </div>
+        <h1>teste</h1>
+    </div>
         
-        <div class="container">
-            <section>
-                <!-- Aqui ficam as perguntas -->
-            </section>
-            <aside class="hidden">
-                <!-- Aqui fica o feedback final -->
-            </aside>
-            <nav class="hidden">
-                <button id="nav-btn-quizz" id="reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
-                <button id="nav-btn-home" id="btn-home" onclick="goHomeScreen()">Voltar pra home</button>
-            </nav>
-        </div>
+    <div class="container">
+        <section>
+            <!-- Aqui ficam as perguntas -->
+        </section>
+        <aside class="hidden">
+            <!-- Aqui fica o feedback final -->
+        </aside>
+        <nav class="hidden">
+            <button id="nav-btn-quizz" id="reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+            <button id="nav-btn-home" id="btn-home" onclick="goHomeScreen()">Voltar pra home</button>
+        </nav>
+    </div>
     `
-
+    
     createHeaderHTML(clickedQuizz);
     createQuizzQuestions(clickedQuizz);
-
+    
     firstQuestionElement = document.querySelector('#quizz-question-container-0');
     firstQuestionElement.scrollIntoView({behavior: "smooth", block: "center"});
 }
-
+    
 function goHomeScreen() {
-   location.reload();
+    location.reload();
 }
+
+// Função criada para testar o get da tela 2
+// function post() {   
+//     quizz = {
+//         title: "USE ESSE PARA TESTAR GET: o quao potterhead vc é?",
+//         image: "https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2010/11/Hogwarts.jpeg",
+//         questions: [
+//             {
+//                 title: "em qual animal olho-tonto transfigurou malfoy?",
+//                 color: "#434CA0",
+//                 answers: [
+//                     {
+//                         text: "gato",
+//                         image: "https://super.abril.com.br/wp-content/uploads/2020/09/04-09_gato_SITE.jpg?quality=90&strip=info&w=1024&resize=1200,800" ,
+//                         isCorrectAnswer: false
+//                     },
+//                     {
+//                         text: "rato",
+//                         image: "https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/01-rat-friends-nationalgeographic_1162144.jpg?w=1600&h=900" ,
+//                         isCorrectAnswer: false
+//                     },
+//                     {
+//                         text: "sapo",
+//                         image: "https://www.infoescola.com/wp-content/uploads/2008/07/sapo-561077704.jpg" ,
+//                         isCorrectAnswer: false
+//                     },
+//                     {
+//                         text: "furao",
+//                         image: "https://www.infoescola.com/wp-content/uploads/2008/06/fur%C3%A3o_138806276.jpg" ,
+//                         isCorrectAnswer: true
+//                     }
+//                 ]
+//             },
+
+//             {
+//                 title: "qual dos objetos NAO é horcrux?",
+//                 color: "#A0438D",
+//                 answers: [
+//                     {   
+//                         text: "harry",
+//                         image: "https://static.wikia.nocookie.net/harrypotter/images/2/20/C93ced28e52082d80becd80a685e2766.jpg/revision/latest?cb=20201004232712&path-prefix=pt-br" ,
+//                         isCorrectAnswer: false
+//                     },
+//                     {
+//                         text: "livro monstro",
+//                         image: "https://img.clasf.com.br/2019/09/19/livro-dos-monstros-harry-potter-20190919213221.3947180015.jpg" ,
+//                         isCorrectAnswer: false
+//                     },
+//                     {
+//                         text: "anel de brinquedo",
+//                         image: "https://cf.shopee.com.br/file/5abbed73a0f94750707a9a38cc9eb29f" ,
+//                         isCorrectAnswer: true
+//                     },
+//                     {
+//                         text: "diadema",
+//                         image: "https://cf.shopee.com.br/file/4b4a06ac91333adeaddbcf86068db3ad" ,
+//                         isCorrectAnswer: false
+//                     }
+//                 ]
+//             },
+
+//             {
+//                 title: "qual é metade-bruxo(a)?",
+//                 color: "#EC362D",
+//                 answers: [
+//                     {   
+//                         text: "rony",
+//                         image: "https://static1.purebreak.com.br/articles/9/97/35/9/@/384519-de-harry-potter-prove-que-voce-sabe-t-diapo-4.jpg" ,
+//                         isCorrectAnswer: false
+//                     },
+//                     {
+//                         text: "hermione",
+//                         image: "https://epipoca.com.br/wp-content/uploads/2021/02/Hermione-Emma-Watson-em-Harry-Potter-Reproducao.jpg" ,
+//                         isCorrectAnswer: true
+//                     },
+//                 ]
+//             }
+
+//         ],
+
+//         levels: [
+//             {
+//                 title:"vc nao e bruxo",
+//                 image:"https://i.pinimg.com/originals/42/8e/34/428e34c70768c48b138dd9a3b60b157b.jpg",
+//                 text: 'patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore. patético melhore.',
+//                 minValue: 0
+//             },
+//             {
+//                 title:"voce é praticamente um aluno de hogwarts",
+//                 image:"https://images-cdn.9gag.com/photo/aV3PzDn_700b.jpg",
+//                 text: 'Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.',
+//                 minValue: 50
+//             } ,
+//             {
+//                 title:"PERFEITO! voce conjuraria facilmente um patrono",
+//                 image:"https://static1.purebreak.com.br/articles/9/10/32/69/@/434382--harry-potter-quiz-qual-seria-o-seu-ex-opengraph_1200-2.jpg",
+//                 text: "vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry. vc é o mais pica superior ao harry.",
+//                 minValue: 100
+//             } 
+//         ]
+//     }
+
+//     let response = axios.post(`${url}`, quizz);
+//     response.catch(()=>{
+//         location.reload()
+//     })
+
+//     response.then((a)=>{
+//         // console.log(a)
+//     })
+
+
+// } 
