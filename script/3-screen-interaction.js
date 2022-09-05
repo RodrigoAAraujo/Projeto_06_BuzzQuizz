@@ -109,9 +109,7 @@ function selectThis3(option){
 
         let counter = 0
         currentSelected = block
-        let requiredBlock = SelectedItem.querySelectorAll(`input`)
-        
-        
+        let requiredBlock = SelectedItem.querySelectorAll("input") && SelectedItem.querySelectorAll("textarea")        
         requiredBlock.forEach((element) => {
             if(element.checkValidity()){
                 counter ++
