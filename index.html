@@ -20,13 +20,13 @@
         <main class="first-screen">
             <div class="container-screen1">
                 <div class="my-quizzes" data-identifier="user-quizzes">
-                    <div class="my-interface">
+                    <div class="my-interface hidden">
                         <h1>Seus Quizzes</h1>
                         <button onclick="goCreateQuizz()" data-identifier="create-quizz">+</button>
                     </div>
-                    <ul>
+                    <ul class="hidden">
                     </ul>
-                    <div class="hidden no-quiz">
+                    <div class="no-quiz">
                         <p>Você não criou nenhum quizz ainda :(</p>
                         <button onclick="goCreateQuizz()" data-identifier="create-quizz">Criar Quizz</button>
                     </div>
@@ -43,6 +43,7 @@
 
         <!-- Tela 2: Página de um Quizz -->
         <main class="second-screen hidden" >
+            <div class="color-gray"></div>
             
             <div class="quizz-header">
                 <div class="bg-opacity">
@@ -67,6 +68,7 @@
 
         <!--Tela 3: Página de Criação de Quizz-->
         <main class="third-screen hidden">
+            <div class="color-gray"></div>
 
             <div class="createQuizz-container">
 

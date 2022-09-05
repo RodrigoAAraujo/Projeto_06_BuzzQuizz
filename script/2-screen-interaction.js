@@ -1,5 +1,4 @@
 const mainElement = document.querySelector('.second-screen')
-const section = document.querySelector('.second-screen section')
 let correctAnswers = [];
 let questionsAmt = 0;
 let correctAnswerAmt = 0;                                     
@@ -14,15 +13,16 @@ function createHeaderHTML(quizz) {
     headerImageContainer.appendChild(imageElement);
 }
 
-function createQuizzQuestions(quizz) {  
+function createQuizzQuestions(quizz) { 
+    const section = document.querySelector('.second-screen section')
+    let i = 0;
+
     let h1Container;
     let answersHTML;
     let alternatives;
     
-    let i = 0;
     for (let question of quizz.questions){
         // Gera o HTML  
-        console.log(i)
         section.innerHTML +=
         `
         <div class="quizz-question-container" id="quizz-question-container-${i}" data-identifier="question">
@@ -32,11 +32,10 @@ function createQuizzQuestions(quizz) {
             <div class="quizz-alternatives" id='quizz-alternative-${i}'>
             </div>
         </div>
-        `
+        `       
         
         // Pega as cores de cada pergunta e joga no HTML
         h1Container = document.querySelector(`#quizz-question-${i}`);
-        console.log(h1Container)
         h1Container.style.backgroundColor = question.color;
 
         // Gera e embaralha as respostas
@@ -111,7 +110,7 @@ function checkAnswer(clickedElement) {
     }, 2000);
     
     // Se respondeu tudo, exibe o resultado e scrolla no resultado
-    let answersAmt = document.querySelectorAll('.selected').length; 
+    let answersAmt = document.querySelectorAll('.second-screen .selected').length; 
     if(answersAmt === questionsAmt) {
         setTimeout(()=> {
             showResults();
@@ -273,6 +272,8 @@ function post() {
     response.then((a)=>{
         // console.log(a)
     })
+
+
 } 
 
 function resetQuizz() {
@@ -304,6 +305,9 @@ function resetQuizz() {
 
     createHeaderHTML(clickedQuizz);
     createQuizzQuestions(clickedQuizz);
+
+    firstQuestionElement = document.querySelector('#quizz-question-container-0');
+    firstQuestionElement.scrollIntoView({behavior: "smooth", block: "center"});
 }
 
 function goHomeScreen() {

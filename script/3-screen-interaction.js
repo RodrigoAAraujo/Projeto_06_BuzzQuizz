@@ -10,7 +10,8 @@ const form2 = document.querySelector(".third-screen .sub-screen2 form")
 const form3 = document.querySelector(".third-screen .sub-screen3 form")
 
 const subScreen1Fields = document.querySelectorAll(".sub-screen1 [required]")
-const subScreen3Fields = document.querySelectorAll(".sub-screen3 [required]")
+
+
 
 
 /* Variáveis de Informações dos formulários*/
@@ -75,10 +76,9 @@ function selectThis2(option){
         
         }
 
-
         let counter = 0
         currentSelected = block
-        let requiredBlock = SelectedItem.querySelectorAll("[required]")
+        let requiredBlock = SelectedItem.querySelectorAll(`input`)
         
         requiredBlock.forEach((element) => {
             if(element.checkValidity()){
@@ -86,21 +86,15 @@ function selectThis2(option){
             }else{
                 const fakeSubmitButton = block.parentNode.querySelector("button")
                 fakeSubmitButton.click()
-                SelectedItem.scrollIntoView(false)
+                SelectedItem.scrollIntoView({behavior: "smooth", block: "center"})
             }
         })
         if (counter == requiredBlock.length){
             block.classList.add("selected")
             SelectedItem.classList.remove("selected")
-            block.scrollIntoView(false)
+            block.scrollIntoView({behavior: "smooth", block: "center"})
         }
     }
-    let previousObject = block.previousElementSibling
-    if(previousObject !== null){
-        previousObject.scrollIntoView() 
-        // previousObject.scrollIntoView({behavior: "smooth", block: "center"}); Caso queira scrollar suavemente
-    }
-
 }
 
 function selectThis3(option){
@@ -112,9 +106,11 @@ function selectThis3(option){
         block.classList.add("selected")
         
     }else{
+
         let counter = 0
         currentSelected = block
-        let requiredBlock = SelectedItem.querySelectorAll("[required]")
+        let requiredBlock = SelectedItem.querySelectorAll(`input`)
+        
         
         requiredBlock.forEach((element) => {
             if(element.checkValidity()){
@@ -122,13 +118,13 @@ function selectThis3(option){
             }else{
                 const fakeSubmitButton = block.parentNode.querySelector("button")
                 fakeSubmitButton.click()
-                SelectedItem.scrollIntoView(false)
+                SelectedItem.scrollIntoView({behavior: "smooth", block: "center"})
             }
         })
         if (counter == requiredBlock.length){
             block.classList.add("selected")
             SelectedItem.classList.remove("selected")
-            block.scrollIntoView(false)
+            block.scrollIntoView({behavior: "smooth", block: "center"})
         }
     }    
 }
@@ -136,8 +132,6 @@ function selectThis3(option){
 function validateCurrent(){
 
     currentSelected = document.querySelector(".third-screen .sub-screen2 .selected")
-
-    console.log("Entrou")
 
     let validation = currentSelected.querySelectorAll("header .validation")
 
@@ -180,7 +174,8 @@ function validateCurrent(){
     }
 }
 
-/*------ Sub-screens Functions -----------*/
+
+/*------ Validations in Forms -----------*/
 
 form1.addEventListener("submit", event =>{
     event.preventDefault()
@@ -197,24 +192,28 @@ form1.addEventListener("submit", event =>{
 })
 
 function renderQuestions(){
-    console.log(basicTraits.question)
     for(let i = 0; i< basicTraits.question; i++){
         form2.innerHTML += `
         <div>
             <header>
                 <h2>Pergunta ${i+1}</h2>
+
                 <input type="text" min="20"placeholder="Texto da pergunta" required>
-                <input type="color" placeholder="Cor de fundo da pergunta" required>
+                <input type="text" class="input-color" placeholder="Cor de fundo da pergunta" value="#000000" required>
+
                 <h2>Resposta correta</h2>
+
                 <input type="text" min="1" placeholder="Resposta correta" required>
                 <input type="url" placeholder="URL da imagem" required>
+
                 <h2>Respostas incorretas</h2>
+
                 <div class="wrong-answers">
                     <input type="text" min="1" placeholder="Resposta incorreta 1" required>
                     <input type="url" placeholder="URL da imagem 1" required>
 
                     <div class="space"></div>
-                        
+                            
                     <div class="validation">
                         <input class="maybe" min="1" type="text" placeholder="Resposta incorreta 2 (opcional)">
                         <input class="maybe" type="url" placeholder="URL da imagem 2 (opcional)">
@@ -243,6 +242,7 @@ function renderQuestions(){
 
 form2.addEventListener("submit", event =>{
     event.preventDefault()
+    
 
     let individualQuestion = document.querySelectorAll(".sub-screen2 header")
 
@@ -272,8 +272,8 @@ form2.addEventListener("submit", event =>{
 
         if (receive[6]!= null){
             optionalQuestion1 = {
-                wrongQuestion1: receive[6].value,
-                wrongQuestionImage1: receive[7].value,
+                text: receive[6].value,
+                image: receive[7].value,
                 isCorrectAnswer:false
             }
 
@@ -281,8 +281,8 @@ form2.addEventListener("submit", event =>{
         }
         if (receive[8]!= null){
             optionalQuestion2 = {
-                wrongQuestion1: receive[8].value,
-                wrongQuestionImage1: receive[9].value,
+                text: receive[8].value,
+                image: receive[9].value,
                 isCorrectAnswer: false
             }
 
@@ -305,10 +305,22 @@ function renderLevels(){
             <div data-identifier="level">
                 <header>
                     <h2>Nível ${i+1}</h2>
-                    <input type="text" min="10" placeholder="Título do nível" required>
-                    <input type="number" min="0" max="100" placeholder="% de acerto mínima" required>
-                    <input type="url" placeholder="URL da imagem do nível" required>
-                    <textarea type="text" cols="30" rows="10" minlength="30" placeholder="Descrição do Nível" required></textarea>
+                    <div>
+                        <input type="text" min="10" placeholder="Título do nível" required>
+                        <span class="error"></span>
+                    </div>
+                    <div>
+                        <input class="validatePercentage" type="number" min="0" max="100" placeholder="% de acerto mínima" required>
+                        <span class="error"></span>
+                    </div>
+                    <div>
+                        <input type="url" placeholder="URL da imagem do nível" required>
+                        <span class="error"></span>
+                    </div>
+                    <div>
+                        <textarea type="text" cols="30" rows="10" minlength="30" placeholder="Descrição do Nível" required></textarea>
+                        <span class="error"></span>
+                    </div>
                 </header>
                 <footer>
                     <h2>Nível ${i+1}</h2>
@@ -323,8 +335,13 @@ function renderLevels(){
 
 }
 
-form3.addEventListener("submit", event =>{
+form3.addEventListener("submit", event =>{    
     event.preventDefault()
+
+    levelsBase = []
+
+
+    let validation = false
 
     let individualLevel = document.querySelectorAll(".sub-screen3 header")
 
@@ -336,17 +353,44 @@ form3.addEventListener("submit", event =>{
             image: receive[2].value,
             text: receive[3].value,
             minValue: Number(receive[1].value)
-        }
-        levelsBase.push(LevelTraits)  
+        } 
+        levelsBase.push(LevelTraits)
     })
 
-    postQuiz()
+    const validationError = form3.querySelectorAll(".validatePercentage")
+    validationError.forEach((element)=>{
+        if (element.value == "0"){
+            validation = true
+        }
+    })
+
+    if (validation == true){
+        postQuiz()
+    }else{
+        const validationErrorBlockSelected = form3.querySelector(".selected .validatePercentage")
+        validationErrorBlockSelected.classList.add("problem")
+        const Message = validationErrorBlockSelected.parentNode.querySelector(".error")
+        Message.innerHTML =" Pelo menos uma das % tem que ser 0"
+    }
 })
 
+function resetValidation(block){
+    const fieldProblem = block.querySelectorAll("[required]")
+    fieldProblem.forEach((element)=> {
+        element.parentNode.querySelector(".error").innerHTML = ""
+        if(element.classList.contains("problem")){
+            element.classList.remove("problem")
+        }
+
+    })
+
+
+}
+
+/* -----Quizz Creation---------*/
+
 function postQuiz(){
-    console.log(basicTraits)
-    console.log(questionsBase)
-    console.log(levelsBase)
+
     let objectToSend= 
     {
         title: basicTraits.title,
@@ -354,11 +398,9 @@ function postQuiz(){
         questions: questionsBase,
         levels: levelsBase
     }
-    
-    
+    // console.log(objectToSend)
     let promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes" , objectToSend)
 
-    console.log(objectToSend)
     promise.then(storageQuiz)
     promise.catch(problem)
 
@@ -383,12 +425,14 @@ function accessQuizz() {
 }
 
 function storageQuiz(response){
+    // console.log(response)
     createdQuizz = response.data 
     if(localStorage.getItem("userQuizzList")){
         const unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"))
         const quizzInfo = {
             id: response.data.id,
-            title: response.data.title
+            title: response.data.title,
+            key: response.data.key
         }
         unserializedList.push(quizzInfo)
         const serializedQuizz = JSON.stringify(unserializedList)
@@ -398,7 +442,8 @@ function storageQuiz(response){
         const quizzInfo = [
             {
                 id: response.data.id,
-                title: response.data.title
+                title: response.data.title,
+                key: response.data.key
             }
         ]
         localStorage.setItem("userQuizzList", JSON.stringify(quizzInfo));
@@ -409,7 +454,8 @@ function storageQuiz(response){
 }
 
 function problem(error){
-    console.log(error)
+    console.log("problem")
+
 }
 
 function renderOwnQuiz(){
@@ -422,9 +468,4 @@ function renderOwnQuiz(){
         <img src="${basicTraits.url}">
         <p>${basicTraits.title}</p>
     `
-}
-
-
-function accessQuizz() {
-    enterQuiz(id)
 }

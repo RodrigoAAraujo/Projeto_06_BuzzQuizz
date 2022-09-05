@@ -1,11 +1,17 @@
-
-
-
 function getAndRenderQuizzes(){
     
     // Checa se o usuário tem quizzes criados e os renderiza
-    if(localStorage.getItem("userQuizzList")){
-        myQuizzes.classList.remove("hidden");
+    let quizzesArray = JSON.parse(localStorage.getItem("userQuizzList"));
+    if(quizzesArray.length != 0){
+        console.log('entrou')
+
+        myInterface.classList.remove("hidden")
+        console.log(myInterface)
+        myInterfaceUl.classList.remove('hidden')
+        console.log(myInterfaceUl)
+        noQuizz.classList.add('hidden')
+
+        console.log(myQuizzes)
         const unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"));
         myQuizzesCreated = unserializedList;
 
@@ -15,10 +21,13 @@ function getAndRenderQuizzes(){
                 myQuizzes.innerHTML += 
                 
                 `
-                <li class="${quizz.data.id}" onclick="enterQuiz(this)" data-identifier="quizz-card">
+                <li class="${quizz.data.id}" data-identifier="quizz-card">
                     <h2>${quizz.data.title}</h2>
-                    <div class="gradient"></div>
+                    <div onclick="enterQuiz(this)" class="gradient"></div>
                     <img src="${quizz.data.image}"></img>
+                    <div class="deleteQuizzIcon" onclick="deleteQuiz(this)">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </div>
                 </li>
                 `
             })
@@ -35,9 +44,9 @@ function getAndRenderQuizzes(){
             // nao entenedi pq precisava desse if, entao tirei kkkk
             // if (myQuizzesCreated.length == 0 || myQuizzesCreated.forEach((element) => element =! quizId)){
                 otherQuizzes.innerHTML += `
-                <li class="${quizId}" onclick="enterQuiz(this)" data-identifier="quizz-card">
+                <li class="${quizId}" data-identifier="quizz-card">
                     <h2>${quizTitle}</h2>
-                    <div class="gradient"></div>
+                    <div onclick="enterQuiz(this)" class="gradient"></div>
                     <img src="${quizImage}"></img>
                 </li>
                 `
@@ -87,9 +96,37 @@ function goCreateQuizz(){
 }
 
 function enterQuiz(id){
-    FirstScreen.classList.add("hidden")
-    SecondScreen.classList.remove("hidden")
-    let QuizzId = id.classList
+    let QuizzId = null
+    
+    if(!FirstScreen.classList.contains("hidden")){
+        FirstScreen.classList.add("hidden")
+        SecondScreen.classList.remove("hidden")
+        QuizzId = id.parentNode.classList
+    }else{
+        QuizzId = id
+        SecondScreen.innerHTML = `
+        <div class="quizz-header">
+            <div class="bg-opacity">
+                <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
+            </div>
+            <h1>teste</h1>
+        </div>
+    
+        <div class="container">
+            <section>
+                <!-- Aqui ficam as perguntas -->
+            </section>
+            <aside class="hidden">
+                <!-- Aqui fica o feedback final -->
+            </aside>
+            <nav class="hidden">
+                <button id="nav-btn-quizz" id="reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+                <button id="nav-btn-home" id="btn-home" onclick="goHomeScreen()">Voltar pra home</button>
+            </nav>
+        </div>
+        `
+    }
+
     const response = axios.get(`${url}/${QuizzId}`);
     response.catch(()=>{
         location.reload();
@@ -101,6 +138,50 @@ function enterQuiz(id){
         createQuizzQuestions(quizz)
         clickedQuizz = quizz;
     })
+}
+
+function deleteQuiz(id){
+    let quizzId = id.parentNode.classList
+    quizzIdNumber = Number(quizzId[0])
+    let theQuizCorrect;
+    
+    let unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"));
+    myQuizzesCreated = unserializedList;
+    console.log(myQuizzesCreated)
+    
+    myQuizzesCreated.forEach((element) =>{
+        if (element.id == quizzId){
+            theQuizCorrect = element;
+        }
+    })
+
+    for (let i = 0; i < myQuizzesCreated.length; i++) {
+        console.log(myQuizzesCreated[i])
+        if(myQuizzesCreated[i].id === quizzIdNumber){
+            myQuizzesCreated.splice(i, 1);
+        }
+    }
+    
+    
+    console.log(theQuizCorrect.key)
+    
+    // Deleta o quizz da API
+    const deleteQuiz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${theQuizCorrect.id}`, {headers: {'Secret-Key': theQuizCorrect.key}})
+    
+    deleteQuiz.then(refreshPage)
+    deleteQuiz.catch((error)=> console.log(error))
+    
+    // Deleta o quizz do localStorage 
+    localStorage.setItem("userQuizzList", JSON.stringify(myQuizzesCreated))
+}
+
+function teste(){
+    myQuizzesCreated =  JSON.parse(localStorage.getItem("userQuizzList"));
+    console.log(myQuizzesCreated)
+}
+
+function refreshPage(){
+    window.location.reload()
 }
 
 getAndRenderQuizzes()
