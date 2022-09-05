@@ -2,6 +2,8 @@ function getAndRenderQuizzes(){
     
     // Checa se o usuário tem quizzes criados e os renderiza
     let quizzesArray = JSON.parse(localStorage.getItem("userQuizzList"));
+    if(!quizzesArray) quizzesArray = [];
+
     if(quizzesArray.length != 0){
         console.log('entrou')
 
