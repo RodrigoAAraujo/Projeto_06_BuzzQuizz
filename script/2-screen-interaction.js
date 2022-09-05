@@ -15,17 +15,18 @@ function createHeaderHTML(quizz) {
 }
 
 function createQuizzQuestions(quizz) {  
-    let i = 0;
     let h1Container;
     let answersHTML;
     let alternatives;
-
+    
+    let i = 0;
     for (let question of quizz.questions){
         // Gera o HTML  
+        console.log(i)
         section.innerHTML +=
         `
         <div class="quizz-question-container" id="quizz-question-container-${i}" data-identifier="question">
-            <div class='quizz-question' id='quizz-question-${i}'>
+            <div class='quizz-question' id="quizz-question-${i}">
                 <h1>${question.title}</h1>
             </div>
             <div class="quizz-alternatives" id='quizz-alternative-${i}'>
@@ -35,6 +36,7 @@ function createQuizzQuestions(quizz) {
         
         // Pega as cores de cada pergunta e joga no HTML
         h1Container = document.querySelector(`#quizz-question-${i}`);
+        console.log(h1Container)
         h1Container.style.backgroundColor = question.color;
 
         // Gera e embaralha as respostas
@@ -47,7 +49,7 @@ function createQuizzQuestions(quizz) {
             alternatives.innerHTML += answersHTML[j];
         }
 
-        questionAmt++;
+        questionsAmt++;
         i++;
     }
 }
@@ -61,7 +63,7 @@ function pushAnswers(answers) {
             `
             <div id="ans${i}" onclick="checkAnswer(this)" data-identifier="answer">
             <img class="quizz-alternative-image" src=${answer.image}>
-            <p>${answer.text}</p>
+            <p class="quizz-alternative-text">${answer.text}</p>
             </div>
             `
         )
@@ -158,7 +160,7 @@ function calculateScore() {
         }
     }
 
-    const score = Math.round((correctAnswerAmt / questionAmt)*100)
+    const score = Math.round((correctAnswerAmt / questionsAmt)*100)
     return score;
 
 }
@@ -274,10 +276,34 @@ function post() {
 } 
 
 function resetQuizz() {
-    correctAnswers = [];
     questionsAmt = 0;
     correctAnswerAmt = 0;  
+    mainElement.innerHTML =
 
+    `       
+        <div class="quizz-header">
+            <div class="bg-opacity">
+                <!-- <img src="imagem-ilustrativa-dps-apago.jpeg" alt=""> -->
+            </div>
+            <h1>teste</h1>
+        </div>
+        
+        <div class="container">
+            <section>
+                <!-- Aqui ficam as perguntas -->
+            </section>
+            <aside class="hidden">
+                <!-- Aqui fica o feedback final -->
+            </aside>
+            <nav class="hidden">
+                <button id="nav-btn-quizz" id="reset-quizz" onclick="resetQuizz()">Reiniciar quizz</button>
+                <button id="nav-btn-home" id="btn-home" onclick="goHomeScreen()">Voltar pra home</button>
+            </nav>
+        </div>
+    `
+
+    createHeaderHTML(clickedQuizz);
+    createQuizzQuestions(clickedQuizz);
 }
 
 function goHomeScreen() {

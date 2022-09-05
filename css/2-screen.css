@@ -80,6 +80,13 @@
     padding: 5px 0;
 }
 
+.quizz-alternative-text {
+    width: 315px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: hidden;
+}
+
 
 .whitish-gradient {
     opacity: 45%;
@@ -111,6 +118,11 @@
     line-height: 25px;
     color: #484848;
     padding: 10px 0 10px 10px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
 }
 
 nav {
@@ -168,6 +180,10 @@ nav {
         width: 270px;
     }
 
+    .quizz-alternative-text {
+        width: 270px;
+    }
+
     .quizz-result-image{
         width: 270px;
     }
@@ -185,6 +201,10 @@ nav {
     }
 
     .quizz-alternative-image {
+        width: 250px;
+    }
+
+    .quizz-alternative-text {
         width: 250px;
     }
 
@@ -219,6 +239,10 @@ nav {
         height: 150px;
         object-fit: cover;
         padding: 5px 0;
+    }
+
+    .quizz-alternative-text {
+        width: 200px;
     }
 
     .quizz-result-image {
