@@ -15,10 +15,13 @@ function getAndRenderQuizzes(){
                 myQuizzes.innerHTML += 
                 
                 `
-                <li class="${quizz.data.id}" onclick="enterQuiz(this)" data-identifier="quizz-card">
+                <li class="${quizz.data.id}" data-identifier="quizz-card">
                     <h2>${quizz.data.title}</h2>
-                    <div class="gradient"></div>
+                    <div onclick="enterQuiz(this)" class="gradient"></div>
                     <img src="${quizz.data.image}"></img>
+                    <div class="deleteQuizzIcon" onclick="deleteQuiz(this)">
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </div>
                 </li>
                 `
             })
@@ -35,9 +38,9 @@ function getAndRenderQuizzes(){
             // nao entenedi pq precisava desse if, entao tirei kkkk
             // if (myQuizzesCreated.length == 0 || myQuizzesCreated.forEach((element) => element =! quizId)){
                 otherQuizzes.innerHTML += `
-                <li class="${quizId}" onclick="enterQuiz(this)" data-identifier="quizz-card">
+                <li class="${quizId}" data-identifier="quizz-card">
                     <h2>${quizTitle}</h2>
-                    <div class="gradient"></div>
+                    <div onclick="enterQuiz(this)" class="gradient"></div>
                     <img src="${quizImage}"></img>
                 </li>
                 `
@@ -92,7 +95,7 @@ function enterQuiz(id){
     if(!FirstScreen.classList.contains("hidden")){
         FirstScreen.classList.add("hidden")
         SecondScreen.classList.remove("hidden")
-        QuizzId = id.classList
+        QuizzId = id.parentNode.classList
     }else{
         QuizzId = id
         SecondScreen.innerHTML = `
@@ -129,6 +132,31 @@ function enterQuiz(id){
         createQuizzQuestions(quizz)
         clickedQuizz = quizz;
     })
+}
+
+function deleteQuiz(id){
+    let quizzId = id.parentNode.classList
+    let theQuizCorrect 
+
+    
+    const unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"));
+    myQuizzesCreated = unserializedList;
+        
+    myQuizzesCreated.forEach((element) =>{
+        if (element.id == quizzId){
+            theQuizCorrect = element
+        }
+    })
+    
+    console.log(theQuizCorrect.key)
+    const deleteQuiz = axios.delete(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${theQuizCorrect.id}`, {headers: {'Secret-Key': theQuizCorrect.key}})
+    console.log(deleteQuiz)
+    deleteQuiz.then(refreshPage)
+    deleteQuiz.catch((error)=> console.log(error))
+}
+
+function refreshPage(){
+    window.location.reload()
 }
 
 getAndRenderQuizzes()

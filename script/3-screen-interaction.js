@@ -272,8 +272,8 @@ form2.addEventListener("submit", event =>{
 
         if (receive[6]!= null){
             optionalQuestion1 = {
-                wrongQuestion1: receive[6].value,
-                wrongQuestionImage1: receive[7].value,
+                text: receive[6].value,
+                image: receive[7].value,
                 isCorrectAnswer:false
             }
 
@@ -281,8 +281,8 @@ form2.addEventListener("submit", event =>{
         }
         if (receive[8]!= null){
             optionalQuestion2 = {
-                wrongQuestion1: receive[8].value,
-                wrongQuestionImage1: receive[9].value,
+                text: receive[8].value,
+                image: receive[9].value,
                 isCorrectAnswer: false
             }
 
@@ -391,7 +391,6 @@ function resetValidation(block){
 
 function postQuiz(){
 
-
     let objectToSend= 
     {
         title: basicTraits.title,
@@ -426,12 +425,14 @@ function accessQuizz() {
 }
 
 function storageQuiz(response){
+    console.log(response)
     createdQuizz = response.data 
     if(localStorage.getItem("userQuizzList")){
         const unserializedList =  JSON.parse(localStorage.getItem("userQuizzList"))
         const quizzInfo = {
             id: response.data.id,
-            title: response.data.title
+            title: response.data.title,
+            key: response.data.key
         }
         unserializedList.push(quizzInfo)
         const serializedQuizz = JSON.stringify(unserializedList)
@@ -441,7 +442,8 @@ function storageQuiz(response){
         const quizzInfo = [
             {
                 id: response.data.id,
-                title: response.data.title
+                title: response.data.title,
+                key: response.data.key
             }
         ]
         localStorage.setItem("userQuizzList", JSON.stringify(quizzInfo));

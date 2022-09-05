@@ -60,6 +60,25 @@
     display: flex;
     align-items: center;
 }
+.first-screen .my-quizzes li{
+    position: relative;
+}
+.first-screen .my-quizzes li .deleteQuizzIcon{
+    z-index: 10;
+    position: absolute;
+    top: 9px; right:0;
+    height: 43px;
+    width: 43px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: #EC362D;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
 .first-screen .my-interface button{
     width: 30px;
     height: 30px;
