@@ -8,4 +8,4 @@ HTML & CSS page that consumes an external API to test your knowledge about a few
 ```bash
 git clone https://github.com/RodrigoAAraujo/Projeto_06_BuzzQuizz
 ```
-2. Execute the `index.html` file
+2. Execute the `index.html` file with your browser.
